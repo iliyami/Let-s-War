@@ -16,6 +16,10 @@ bool loadMedia();
 //Frees media and shuts down SDL
 void close();
 
+//for closing the programm(exiting)
+bool quit = false;
+SDL_Event e;
+
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 	
@@ -96,7 +100,7 @@ void close()
 int main( int argc, char* args[] )
 {
     srand(time(0));
-    int cn=rand()%3+1;
+    int cn=rand()%3+1;//Debbbbbbbbbbuuuuuuuuuuuuuuug
 	//Start up SDL and create window
     
 	if( !init() )
@@ -106,7 +110,7 @@ int main( int argc, char* args[] )
 	else
 	{
 		
-       while(true)
+       while(!quit)
 		{
 		//Load media
 		if( !loadMedia(cn) )
@@ -122,7 +126,14 @@ int main( int argc, char* args[] )
 			//Update the surface
 			SDL_UpdateWindowSurface( gWindow );
 
-			SDL_Delay(5000);
+			while( SDL_PollEvent( &e ) != 0 )
+                {
+                    //User requests quit
+                    if( e.type == SDL_QUIT )
+                    {
+                        quit = true;
+                    }
+                }
 		}
 
 	}
