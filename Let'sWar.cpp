@@ -36,7 +36,8 @@ SDL_Renderer* gRenderer = NULL;
 SDL_Surface* gScreenSurface = NULL;
 
 //Surface for loading png images (except map)
-SDL_Surface* gSurface = NULL;
+SDL_Surface* gSurface1 = NULL;
+SDL_Surface* gSurface2 = NULL;
 
 //The image we will load and show on the screen
 SDL_Surface* gMap= NULL;
@@ -70,12 +71,11 @@ bool init()
 		else
 		{
 			//Get window surface
-			gScreenSurface = SDL_GetWindowSurface( gWindow );
-			gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
-			gSurface = IMG_Load("tank1.png");
-   			gTexture1 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
-    		gSurface = IMG_Load("tank2.png");
-  			gTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			 gScreenSurface = SDL_GetWindowSurface( gWindow );
+			gSurface1 = IMG_Load("tank1.png");
+   			gTexture1 = SDL_CreateTextureFromSurface(gRenderer, gSurface1);
+    		gSurface2 = IMG_Load("tank2.png");
+  			gTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface2);
 			//  gtank1.x = 100 * (rand() % 9) + 50; ezafiiiii
     		//gSurface = IMG_Load("laser.png");
     		// glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface);
@@ -119,7 +119,11 @@ void close()
 {
 	//Deallocate surface
 	SDL_FreeSurface( gMap );
+	//SDL_FreeSurface( gSurface1);
+	//SDL_FreeSurface( gSurface2 );
 	gMap = NULL;
+	//gSurface1 = NULL;
+	//gSurface2 = NULL;
 
 	//Destroy window
 	SDL_DestroyWindow( gWindow );
@@ -159,11 +163,10 @@ int main( int argc, char* args[] )
 				//Update the surface
 				SDL_UpdateWindowSurface( gWindow );
 
-				SDL_Delay(100000);
+				SDL_Delay(5000);
 			}
 			
 			close();
-
 	}
 
 
