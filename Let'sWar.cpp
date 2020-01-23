@@ -1,7 +1,15 @@
-
 //Using SDL and standard IO
-#include <SDL2/SDL.h>
 #include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL2_gfxPrimitives.h>
+
+using namespace std;
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1280;
@@ -16,19 +24,28 @@ bool loadMedia();
 //Frees media and shuts down SDL
 void close();
 
-//for closing the programm(exiting)
-bool quit = false;
-SDL_Event e;
+
 
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
-	
+
+//Renders
+SDL_Renderer* gRenderer = NULL;
+
 //The surface contained by the window
 SDL_Surface* gScreenSurface = NULL;
+
+//Surface for loading png images (except map)
+SDL_Surface* gSurface = NULL;
 
 //The image we will load and show on the screen
 SDL_Surface* gMap= NULL;
 
+//Textures
+SDL_Texture* gTexture1 = NULL, * gTexture2 = NULL;
+
+//keyboard states
+const Uint8 *state = SDL_GetKeyboardState(NULL);
 
 bool init()
 {
@@ -44,7 +61,7 @@ bool init()
 	else
 	{
 		//Create window
-		gWindow = SDL_CreateWindow( "Let's war", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+		gWindow = SDL_CreateWindow( "Let's war", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 		if( gWindow == NULL )
 		{
 			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -54,6 +71,21 @@ bool init()
 		{
 			//Get window surface
 			gScreenSurface = SDL_GetWindowSurface( gWindow );
+			gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+			gSurface = IMG_Load("tank1.png");
+   			gTexture1 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+    		gSurface = IMG_Load("tank2.png");
+  			gTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			//  gtank1.x = 100 * (rand() % 9) + 50; ezafiiiii
+    		//gSurface = IMG_Load("laser.png");
+    		// glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+	  		// gtank1.x = 100 * (rand() % 9) + 50;
+    		// gtank1.y = 100 * (rand() % 6) + 50;
+    		// do
+    		// {
+        	// 	gtank2.x = 100 * (rand() % 9) + 50;
+        	// 	gtank2.y = 100 * (rand() % 6) + 50;
+    		// } while (gtank1.x == gtank2.x && gtank1.y == gtank2.y);
 		}
 	}
 
@@ -65,7 +97,7 @@ bool loadMedia(int cn)
 	//Loading success flag
 	bool success = true;
 
-	//Load splash image
+	//Load random image
     
  	if(cn==1)
     {gMap = SDL_LoadBMP("map1.bmp");}
@@ -99,8 +131,9 @@ void close()
 
 int main( int argc, char* args[] )
 {
+	
     srand(time(0));
-    int cn=rand()%3+1;//Debbbbbbbbbbuuuuuuuuuuuuuuug
+    int cn=rand()%3+1;
 	//Start up SDL and create window
     
 	if( !init() )
@@ -109,36 +142,29 @@ int main( int argc, char* args[] )
 	}
 	else
 	{
-		
-       while(!quit)
-		{
-		//Load media
-		if( !loadMedia(cn) )
-		{
-			printf( "Failed to load media!\n" );
-			break;
-		}
-		else
-		{
-			//Apply the image
-			SDL_BlitSurface( gMap, NULL, gScreenSurface, NULL );
-			
-			//Update the surface
-			SDL_UpdateWindowSurface( gWindow );
+		//For closing the program
+		// bool quit=false;
+		// SDL_Event e;
 
-			while( SDL_PollEvent( &e ) != 0 )
-                {
-                    //User requests quit
-                    if( e.type == SDL_QUIT )
-                    {
-                        quit = true;
-                    }
-                }
-		}
+			//Load media
+			if( !loadMedia(cn) )
+			{
+				printf( "Failed to load media!\n" );
+			}
+			else
+			{
+				//Apply the image
+				SDL_BlitSurface( gMap, NULL, gScreenSurface, NULL );
+			
+				//Update the surface
+				SDL_UpdateWindowSurface( gWindow );
+
+				SDL_Delay(100000);
+			}
+			
+			close();
 
 	}
-    }
-	
 
 
 	return 0;
