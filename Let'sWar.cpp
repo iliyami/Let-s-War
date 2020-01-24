@@ -9,7 +9,9 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+
 #include "tank.h"
+#include "Bullet.h"
 
 using namespace std;
 
@@ -32,7 +34,7 @@ void close();
 SDL_Window* gWindow = NULL;
 
 //Renders
-SDL_Renderer* gRenderer = NULL;
+
 
 //The surface contained by the window
 SDL_Surface* gScreenSurface = NULL;
@@ -90,13 +92,13 @@ bool init()
     		// glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface);
 	  		 gtank1.x = -1 * rand()%1280+1;
     		 gtank1.y = -1 * rand()%790+1;
-			 grect1 = {gtank1.x, gtank1.y, 1280, 790};
+			 //grect1 = {gtank1.x, gtank1.y, 1280, 790};
     		 do
     		 {
         	 	gtank2.x = -1 * rand()%1280+1;
         	 	gtank2.y = -1 * rand()%790+1;
     		 } while (gtank1.x == gtank2.x && gtank1.y == gtank2.y);
-			 grect2 = {gtank2.x,gtank2.y,1280,790};
+			 //grect2 = {gtank2.x,gtank2.y,1280,790};
 		}
 	}
 
@@ -124,6 +126,62 @@ bool loadMedia(int cn)
 	}
 
 	return success;
+}
+
+bool Tank(SDL_Event e, bool *quit)
+{
+
+SDL_PollEvent(&e);
+    if (state[SDL_SCANCODE_LEFT])
+        degree1 -= 0.2;
+    if (state[SDL_SCANCODE_RIGHT])
+        degree1 += 0.2;
+    if (state[SDL_SCANCODE_A])
+        degree2 -= 0.2;
+    if (state[SDL_SCANCODE_D])
+        degree2 += 0.2;
+
+    if (degree1 > 180)
+        degree1 = -180;
+    if (degree1 < -180)
+        degree1 = 180;
+    if (degree2 > 180)
+        degree2 = -180;
+    if (degree2 < -180)
+        degree2 = 180;
+if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_KP_0)
+    {
+        if (gtank1.bullet <= 5)
+        {
+            gtank1.bullet++;
+            gbullet1[gtank1.bullet - 1].lastTimeball = SDL_GetTicks();
+            gbullet1[gtank1.bullet - 1].value = 1;
+            gbullet1[gtank1.bullet - 1].x = gtank1.x + (25 * cos(-degree1 * 3.14 / 180));
+            gbullet1[gtank1.bullet - 1].y = gtank1.y - (25 * sin(-degree1 * 3.14 / 180));
+            gbullet1[gtank1.bullet - 1].xdelta = 0.1 * cos(-degree1 * 3.14 / 180);
+            gbullet1[gtank1.bullet - 1].ydelta = 0.1 * sin(-degree1 * 3.14 / 180);
+        }
+    }
+    if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_2)
+    {
+        if (gtank2.bullet <= 5)
+        {
+            gtank2.bullet++;
+            gbullet2[gtank2.bullet - 1].lastTimeball = SDL_GetTicks();
+            gbullet2[gtank2.bullet - 1].value = 1;
+            gbullet2[gtank2.bullet - 1].x = gtank2.x + (25 * cos(-degree2 * 3.14 / 180));
+            gbullet2[gtank2.bullet - 1].y = gtank2.y - (25 * sin(-degree2 * 3.14 / 180));
+            gbullet2[gtank2.bullet - 1].xdelta = 0.1 * cos(-degree2 * 3.14 / 180);
+            gbullet2[gtank2.bullet - 1].ydelta = 0.1 * sin(-degree2 * 3.14 / 180);
+        }
+    }
+    if (e.type == SDL_QUIT)
+    {
+        *quit = true;
+    }
+    grect1 = {gtank1.x - 25, gtank1.y - 25, 50, 50};
+    grect2 = {gtank2.x - 25, gtank2.y - 25, 50, 50};
+    return true;
 }
 
 void close()
