@@ -1,3 +1,4 @@
+
 //Using SDL and standard IO
 #include <iostream>
 #include <string>
@@ -8,7 +9,6 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
-
 #include "tank.h"
 
 using namespace std;
@@ -27,6 +27,7 @@ bool loadMedia();
 void close();
 
 
+
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 
@@ -37,7 +38,8 @@ SDL_Renderer* gRenderer = NULL;
 SDL_Surface* gScreenSurface = NULL;
 
 //Surface for loading png images (except map)
-SDL_Surface* gSurface = NULL;
+SDL_Surface* gSurface1 = NULL;
+SDL_Surface* gSurface2 = NULL;
 
 //The image we will load and show on the screen
 SDL_Surface* gMap= NULL;
@@ -47,6 +49,14 @@ SDL_Texture* gTexture1 = NULL, * gTexture2 = NULL;
 
 //keyboard states
 const Uint8 *state = SDL_GetKeyboardState(NULL);
+
+//rects
+SDL_Rect grect1; //Tank1 rect
+SDL_Rect grect2; //Tank2 rect
+
+//Events
+SDL_Event e;
+
 
 bool init()
 {
@@ -71,21 +81,22 @@ bool init()
 		else
 		{
 			//Get window surface
-			gScreenSurface = SDL_GetWindowSurface( gWindow );
-			gSurface = IMG_Load("tank1.png");
-   			gTexture1 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
-    		gSurface = IMG_Load("tank2.png");
-  			gTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
-			//gtank1.x = 100 * (rand() % 9) + 50; ezafiiiii
+		    gScreenSurface = SDL_GetWindowSurface( gWindow );
+			gSurface1 = SDL_LoadBMP("tank1.bmp");
+   			gTexture1 = SDL_CreateTextureFromSurface(gRenderer, gSurface1);
+    		gSurface2 = SDL_LoadBMP("tank2.bmp");
+  			gTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface2);
     		//gSurface = IMG_Load("laser.png");
-    		//glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface);
-	  		 gtank1.x = 100 * (rand() % 9) + 50;
-    		 gtank1.y = 100 * (rand() % 6) + 50;
+    		// glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+	  		 gtank1.x = -1 * rand()%1280+1;
+    		 gtank1.y = -1 * rand()%790+1;
+			 grect1 = {gtank1.x, gtank1.y, 1280, 790};
     		 do
     		 {
-        	 	gtank2.x = 100 * (rand() % 9) + 50;
-        	 	gtank2.y = 100 * (rand() % 6) + 50;
+        	 	gtank2.x = -1 * rand()%1280+1;
+        	 	gtank2.y = -1 * rand()%790+1;
     		 } while (gtank1.x == gtank2.x && gtank1.y == gtank2.y);
+			 grect2 = {gtank2.x,gtank2.y,1280,790};
 		}
 	}
 
@@ -114,8 +125,6 @@ bool loadMedia(int cn)
 
 	return success;
 }
-
-
 
 void close()
 {
@@ -161,8 +170,9 @@ int main( int argc, char* args[] )
 			{
 				//Apply the image
 				SDL_BlitSurface( gMap, NULL, gScreenSurface, NULL );
-				SDL_BlitSurface( gSurface, NULL, gMap, NULL );
-			
+				SDL_BlitSurface( gSurface1, &grect1, gScreenSurface, NULL );
+				SDL_BlitSurface( gSurface2, &grect2, gScreenSurface, NULL );
+
 				//Update the surface
 				SDL_UpdateWindowSurface( gWindow );
 
@@ -175,3 +185,6 @@ int main( int argc, char* args[] )
 
 	return 0;
 }
+
+   
+
