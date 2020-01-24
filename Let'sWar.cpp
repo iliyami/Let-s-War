@@ -9,6 +9,8 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
 
+#include "tank.h"
+
 using namespace std;
 
 //Screen dimension constants
@@ -25,7 +27,6 @@ bool loadMedia();
 void close();
 
 
-
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 
@@ -36,8 +37,7 @@ SDL_Renderer* gRenderer = NULL;
 SDL_Surface* gScreenSurface = NULL;
 
 //Surface for loading png images (except map)
-SDL_Surface* gSurface1 = NULL;
-SDL_Surface* gSurface2 = NULL;
+SDL_Surface* gSurface = NULL;
 
 //The image we will load and show on the screen
 SDL_Surface* gMap= NULL;
@@ -71,21 +71,21 @@ bool init()
 		else
 		{
 			//Get window surface
-			 gScreenSurface = SDL_GetWindowSurface( gWindow );
-			gSurface1 = IMG_Load("tank1.png");
-   			gTexture1 = SDL_CreateTextureFromSurface(gRenderer, gSurface1);
-    		gSurface2 = IMG_Load("tank2.png");
-  			gTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface2);
-			//  gtank1.x = 100 * (rand() % 9) + 50; ezafiiiii
+			gScreenSurface = SDL_GetWindowSurface( gWindow );
+			gSurface = IMG_Load("tank1.png");
+   			gTexture1 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+    		gSurface = IMG_Load("tank2.png");
+  			gTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			//gtank1.x = 100 * (rand() % 9) + 50; ezafiiiii
     		//gSurface = IMG_Load("laser.png");
-    		// glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface);
-	  		// gtank1.x = 100 * (rand() % 9) + 50;
-    		// gtank1.y = 100 * (rand() % 6) + 50;
-    		// do
-    		// {
-        	// 	gtank2.x = 100 * (rand() % 9) + 50;
-        	// 	gtank2.y = 100 * (rand() % 6) + 50;
-    		// } while (gtank1.x == gtank2.x && gtank1.y == gtank2.y);
+    		//glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+	  		 gtank1.x = 100 * (rand() % 9) + 50;
+    		 gtank1.y = 100 * (rand() % 6) + 50;
+    		 do
+    		 {
+        	 	gtank2.x = 100 * (rand() % 9) + 50;
+        	 	gtank2.y = 100 * (rand() % 6) + 50;
+    		 } while (gtank1.x == gtank2.x && gtank1.y == gtank2.y);
 		}
 	}
 
@@ -114,6 +114,8 @@ bool loadMedia(int cn)
 
 	return success;
 }
+
+
 
 void close()
 {
@@ -159,6 +161,7 @@ int main( int argc, char* args[] )
 			{
 				//Apply the image
 				SDL_BlitSurface( gMap, NULL, gScreenSurface, NULL );
+				SDL_BlitSurface( gSurface, NULL, gMap, NULL );
 			
 				//Update the surface
 				SDL_UpdateWindowSurface( gWindow );
