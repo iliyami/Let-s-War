@@ -1,4 +1,3 @@
-double degree1, degree2;
 
 class tank
 {
