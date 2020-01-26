@@ -1,5 +1,3 @@
-
-//Using SDL and standard IO
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -9,11 +7,10 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL2/SDL_mixer.h>
 #include "tank.h"
 #include "Bullet.h"
 #include "Laser.h"
-
-
 
 
 using namespace std;
@@ -38,9 +35,6 @@ void close();
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 
-//Renders
-
-
 //The surface contained by the window
 SDL_Surface* gScreenSurface = NULL;
 
@@ -54,7 +48,6 @@ SDL_Surface* Wallsurface= NULL;
 SDL_Surface* background=NULL;
 
 //Textures
-
 SDL_Texture* gTexture1 = NULL, * gTexture2 = NULL;
 SDL_Texture* glaser = NULL;
 SDL_Texture* gborderx1 = NULL;
@@ -68,15 +61,12 @@ SDL_Texture* walltexture_x3= NULL;
 SDL_Texture* walltexture_x4= NULL;
 SDL_Texture* walltexture_x5= NULL;
 SDL_Texture* walltexture_x6= NULL;
-
 SDL_Texture* walltexture_y1= NULL;
 SDL_Texture* walltexture_y2= NULL;
 SDL_Texture* walltexture_y3= NULL;
 SDL_Texture* walltexture_y4= NULL;
 SDL_Texture* walltexture_y5= NULL;
 SDL_Texture* walltexture_y6= NULL;
-
-
 
 
 //keyboard states
@@ -86,29 +76,11 @@ const Uint8 *state = SDL_GetKeyboardState(NULL);
 SDL_Rect grect1;
 SDL_Rect grect2; 
 SDL_Rect LaserRect;
-// SDL_Rect borderrectx1={0,0,1280,8};
-// SDL_Rect borderrectx2={0,712,1280,8};
-// SDL_Rect borderrecty1={0,0,8,720};
-// SDL_Rect borderrecty2={1272,0,8,720};
-
-// SDL_Rect wallrectx1={0,0,280,70};
-// SDL_Rect wallrectx2={0,0,280,70};
-// SDL_Rect wallrectx3={0,0,280,70};
-// SDL_Rect wallrectx4={0,0,280,70};
-// SDL_Rect wallrectx5={0,0,280,70};
-// SDL_Rect wallrectx6={0,0,280,70};
-
-
-// SDL_Rect wallrecty1={0,0,70,280};
-// SDL_Rect wallrecty2={0,0,70,280};
-// SDL_Rect wallrecty3={0,0,70,280};
-// SDL_Rect wallrecty4={0,0,70,280};
-// SDL_Rect wallrecty5={0,0,70,280};
-// SDL_Rect wallrecty6={0,0,70,280};
-
 SDL_Rect backrect={0,0,1280,790};
 
-
+//Musics and Audios
+Mix_Music *gMusic = NULL;
+Mix_Chunk *TB = NULL;//Tank Bullet sound
 
 bool init()
 {
@@ -126,6 +98,19 @@ bool init()
 		//Create window
 		gWindow = SDL_CreateWindow( "Let's war", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 		gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+
+		//Initialise SDL_mixer and Music
+		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+		{
+			printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+			success = false;
+		}
+		gMusic = Mix_LoadMUS("Lose-Yourself.wav");
+		TB = Mix_LoadWAV("Tank Bullet.wav");
+		TE = Mix_LoadWAV("Tank explosion.wav");
+		BR = Mix_LoadWAV("Bullet reflect.wav");
+
+
 		if( gWindow == NULL )
 		{
 			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -316,19 +301,6 @@ void loadMedia(int cn)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //movement of tanks
 
 void tankmoveup1()
@@ -361,33 +333,6 @@ void tankmovedw2()
      gtank2.y -= gtank2.dy;
      
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //control movement and turn
 bool Tank(SDL_Event e, bool *quit)
@@ -437,10 +382,11 @@ bool Tank(SDL_Event e, bool *quit)
         tankmoveup2();
     }
     
-    if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_2)
+    if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_q)
     {
         if (gtank1.bullet <= 5)
         {
+			Mix_PlayChannel( -1, TB, 0 );
             gtank1.bullet++;
             gbullet1[gtank1.bullet - 1].lastTimeball = SDL_GetTicks();
             gbullet1[gtank1.bullet - 1].value = 1;
@@ -450,10 +396,11 @@ bool Tank(SDL_Event e, bool *quit)
             gbullet1[gtank1.bullet - 1].ydelta = 0.5 * sin(-degree1 * 3.14 / 180);
         }
     }
-    if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_KP_0)
+    if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RSHIFT)
     {
         if (gtank2.bullet <= 7)
         {
+			Mix_PlayChannel( -1, TB, 0 );
             gtank2.bullet++;
             gbullet2[gtank2.bullet - 1].lastTimeball = SDL_GetTicks();
             gbullet2[gtank2.bullet - 1].value = 1;
@@ -585,6 +532,7 @@ int main( int argc, char* args[] )
 					}
 				}
 				loadMedia(map.cn);
+				Mix_PlayMusic(gMusic, -1);
 				do
 				{
 					SDL_RenderCopy(gRenderer, gbackgroundT, NULL, &backrect);

@@ -1,11 +1,12 @@
 #include <cmath>
-#include "mediya.h"
+#include "media.h"
 
 using namespace std;
 
 SDL_Renderer *gRenderer = NULL;
 Uint32 lastTime = 0, currentTime;
-
+Mix_Chunk *TE = NULL;//Tank Explosion sound
+Mix_Chunk *BR = NULL;//Bullet Reflect sound
 class bullet
 {
   public:
@@ -32,6 +33,7 @@ class bullet
     {
         if ((x - gtank1.x) * (x - gtank1.x) + (y - gtank1.y) * (y - gtank1.y) <= (rball + 18) * (rball + 18))
         {
+            Mix_PlayChannel(-1, TE, 0);
             value = 0;
             lastTime = SDL_GetTicks();
             gtank1.lose = true;
@@ -39,6 +41,7 @@ class bullet
         }
         else if ((x - gtank2.x) * (x - gtank2.x) + (y - gtank2.y) * (y - gtank2.y) <= (rball + 18) * (rball + 18))
         {
+            Mix_PlayChannel(-1, TE, 0);
             value = 0;
             lastTime = SDL_GetTicks();
             gtank2.lose = true;
