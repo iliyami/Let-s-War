@@ -44,6 +44,7 @@ SDL_Surface* gSurface2 = NULL; //tank2
 SDL_Surface* gSurface3 = NULL; //laser
 SDL_Surface* gSurface = NULL; //Numbers
 SDL_Surface* gSurface5 = NULL; // extra ammo
+SDL_Surface* gSurface6 = NULL; //For winning
 
 
 //The image we will load and show on the screen
@@ -73,6 +74,8 @@ SDL_Texture* walltexture_y4= NULL;
 SDL_Texture* walltexture_y5= NULL;
 SDL_Texture* walltexture_y6= NULL;
 SDL_Texture* ammotexture = NULL;//For Extera Ammo
+SDL_Texture* WinTexture1 = NULL;
+SDL_Texture* WinTexture2 = NULL;
 
 //Score Textures
 SDL_Texture* T0 = NULL;
@@ -94,8 +97,9 @@ SDL_Rect grect2;
 SDL_Rect LaserRect;
 SDL_Rect BulletRect;
 SDL_Rect backrect={0,0,1280,790};
-SDL_Rect scoreRect1 = {560, 300, 30, 30}; //grect for the font of tank1 score 
-SDL_Rect scoreRect2 = {1200, 725, 30, 30};//grect for the font of tank2 score 
+SDL_Rect scoreRect1 = {150, 740, 30, 30}; //grect for the font of tank1 score 
+SDL_Rect scoreRect2 = {1090, 740, 30, 30};//grect for the font of tank2 score 
+SDL_Rect WinRect = {0, 0, 1280, 720};
 
 //Musics and Audios
 Mix_Music *gMusic = NULL;
@@ -164,6 +168,10 @@ bool init()
 			T6 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
 			gSurface = SDL_LoadBMP("Numbers/7.bmp");
 			T7 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+            gSurface6 = SDL_LoadBMP("T1.bmp");
+            WinTexture1 = SDL_CreateTextureFromSurface(gRenderer, gSurface6);
+            gSurface6 = SDL_LoadBMP("T2.bmp");
+            WinTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface6);
 
 	  		gtank1.x = 125;
     		gtank1.y = 55;
@@ -4415,8 +4423,10 @@ void BulletIcon(Uint32 lastTimebullet)
 {
 	if(SDL_GetTicks() >= 12000 + lastTimebullet && EBFlag == false)
 	{
+        do{
 		EBFlag = true;
-		BulletRect = {(rand() % 9) * 100 + 100, (rand() % 5) * 100 + 50, 25, 25};
+		BulletRect = {(rand() % 10) * 100 + 100, (rand() % 6) * 100 + 50, 25, 25};
+        }while(SDL_HasIntersection(&BulletRect,&map.wallrectx1)==true||SDL_HasIntersection(&BulletRect,&map.wallrectx2)==true||SDL_HasIntersection(&BulletRect,&map.wallrectx3)==true||SDL_HasIntersection(&BulletRect,&map.wallrectx4)==true||SDL_HasIntersection(&BulletRect,&map.wallrecty1)==true||SDL_HasIntersection(&BulletRect,&map.wallrecty2)==true||SDL_HasIntersection(&BulletRect,&map.wallrecty3)==true||SDL_HasIntersection(&BulletRect,&map.wallrecty4)==true||SDL_HasIntersection(&BulletRect,&map.wallrecty5)==true);
 	}
 }
 
@@ -4465,6 +4475,36 @@ void Score()
 	default: 
 		break;
 	}
+    switch (gtank2.score)
+	{
+	case 0: SDL_RenderCopy(gRenderer, T0, NULL, &scoreRect2);
+		break;
+	case 1:	SDL_RenderCopy(gRenderer, T1, NULL, &scoreRect2);
+		break;
+	case 2: SDL_RenderCopy(gRenderer, T2, NULL, &scoreRect2);
+		break;
+	case 3: SDL_RenderCopy(gRenderer, T3, NULL, &scoreRect2);
+		break;
+	case 4: SDL_RenderCopy(gRenderer, T4, NULL, &scoreRect2);
+		break;
+	case 5: SDL_RenderCopy(gRenderer, T5, NULL, &scoreRect2);
+		break;
+	case 6: SDL_RenderCopy(gRenderer, T6, NULL, &scoreRect2);
+		break;
+	case 7: SDL_RenderCopy(gRenderer, T7, NULL, &scoreRect2);
+		break;
+	default: 
+		break;
+	}
+
+    if(gtank1.score == 7 )
+    {
+        SDL_RenderCopy(gRenderer, WinTexture1, NULL, &WinRect);
+    }
+     else if(gtank2.score == 7 )
+    {
+        SDL_RenderCopy(gRenderer, WinTexture2, NULL, &WinRect);
+    }
 }
 
 void close()
