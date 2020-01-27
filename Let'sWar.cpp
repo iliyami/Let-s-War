@@ -42,7 +42,7 @@ SDL_Surface* gScreenSurface = NULL;
 SDL_Surface* gSurface1 = NULL; //tank1
 SDL_Surface* gSurface2 = NULL; //tank2
 SDL_Surface* gSurface3 = NULL; //laser
-SDL_Surface* gSurface = NULL; // ttf
+SDL_Surface* gSurface = NULL; //Numbers
 SDL_Surface* gSurface5 = NULL; // extra ammo
 
 
@@ -74,6 +74,16 @@ SDL_Texture* walltexture_y5= NULL;
 SDL_Texture* walltexture_y6= NULL;
 SDL_Texture* ammotexture = NULL;//For Extera Ammo
 
+//Score Textures
+SDL_Texture* T0 = NULL;
+SDL_Texture* T1 = NULL;
+SDL_Texture* T2 = NULL;
+SDL_Texture* T3 = NULL;
+SDL_Texture* T4 = NULL;
+SDL_Texture* T5 = NULL;
+SDL_Texture* T6 = NULL;
+SDL_Texture* T7 = NULL;
+
 
 //keyboard states
 const Uint8 *state = SDL_GetKeyboardState(NULL);
@@ -84,17 +94,13 @@ SDL_Rect grect2;
 SDL_Rect LaserRect;
 SDL_Rect BulletRect;
 SDL_Rect backrect={0,0,1280,790};
-SDL_Rect gRF1 = {600, 725, 50, 50}; //grect for the font of tank1 score 
-SDL_Rect gRF2  = {1200, 725, 50, 50};//grect for the font of tank2 score 
+SDL_Rect scoreRect1 = {560, 300, 30, 30}; //grect for the font of tank1 score 
+SDL_Rect scoreRect2 = {1200, 725, 30, 30};//grect for the font of tank2 score 
 
 //Musics and Audios
 Mix_Music *gMusic = NULL;
 Mix_Chunk *TB = NULL;//Tank Bullet sound
 Mix_Chunk *Reloading = NULL;// Tank bullets reloading
-
-//Fonts
-TTF_Font *Font = NULL;
-SDL_Color Color = {0, 0, 0};
 
 bool init()
 {
@@ -143,6 +149,23 @@ bool init()
     		glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface3);
 			gSurface5 = SDL_LoadBMP("Extra Bullet.bmp");
 			ammotexture = SDL_CreateTextureFromSurface(gRenderer, gSurface5);
+			gSurface = SDL_LoadBMP("Numbers/0.bmp");
+			T0 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			gSurface = SDL_LoadBMP("Numbers/1.bmp");
+			T1 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			gSurface = SDL_LoadBMP("Numbers/2.bmp");
+			T2 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			gSurface = SDL_LoadBMP("Numbers/3.bmp");
+			T3 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			gSurface = SDL_LoadBMP("Numbers/4.bmp");
+			T4 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			gSurface = SDL_LoadBMP("Numbers/5.bmp");
+			T5 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			gSurface = SDL_LoadBMP("Numbers/6.bmp");
+			T6 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+			gSurface = SDL_LoadBMP("Numbers/7.bmp");
+			T7 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+
 
 	  		gtank1.x = 125;
     		gtank1.y = 55;
@@ -474,6 +497,31 @@ void BICollision()//BulletIconCollision
 	}
 }
 
+void Score()
+{
+	switch (gtank1.score)
+	{
+	case 0: SDL_RenderCopy(gRenderer, T0, NULL, &scoreRect1);
+		break;
+	case 1:	SDL_RenderCopy(gRenderer, T1, NULL, &scoreRect1);
+		break;
+	case 2: SDL_RenderCopy(gRenderer, T2, NULL, &scoreRect1);
+		break;
+	case 3: SDL_RenderCopy(gRenderer, T3, NULL, &scoreRect1);
+		break;
+	case 4: SDL_RenderCopy(gRenderer, T4, NULL, &scoreRect1);
+		break;
+	case 5: SDL_RenderCopy(gRenderer, T5, NULL, &scoreRect1);
+		break;
+	case 6: SDL_RenderCopy(gRenderer, T6, NULL, &scoreRect1);
+		break;
+	case 7: SDL_RenderCopy(gRenderer, T7, NULL, &scoreRect1);
+		break;
+	default: 
+		break;
+	}
+}
+
 void close()
 {
 	// Deallocate surface
@@ -492,11 +540,6 @@ void close()
 	// SDL_Quit();
 }
 
-void ShowScore()
-{
-    SDL_RenderCopy(gRenderer, gTF1, NULL, &gRF1);
-    SDL_RenderCopy(gRenderer, gTF2, NULL, &gRF2);
-}
 
 void lose()
 {
@@ -510,18 +553,13 @@ void lose()
 				gtank1.bullet = 0;
 				gtank2.bullet = 0;
                 gtank1.score++;
-                gtank1.convert(gtank1.score, gtank1.number);
-                gSurface = TTF_RenderText_Solid(Font, gtank1.number, Color);
-                gTF1 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+                
             }
             else if (gtank2.lose == false)
             {
 				gtank1.bullet = 0;
 				gtank2.bullet = 0;
                 gtank2.score++;
-                gtank2.convert(gtank2.score, gtank2.number);
-                gSurface = TTF_RenderText_Solid(Font, gtank2.number, Color);
-                gTF2 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
             }
             gtank1.lose = false;
             gtank2.lose = false;
@@ -553,8 +591,6 @@ int main( int argc, char* args[] )
 {
     srand(time(0));
     map.setcn();
-	TTF_Init();
-	Font = TTF_OpenFont("Bloomsburg DEMO.ttf", 40);
 
 	//Start up SDL and create window   
 	if( !init() )
@@ -630,8 +666,7 @@ int main( int argc, char* args[] )
 						SDL_RenderCopy(gRenderer, ammotexture, NULL, &BulletRect);
 					BulletIcon(lastTimebullet);
 					BICollision();
-					
-					ShowScore();
+					Score();
 					for (int i = 0; i < 6; i++)
 					{
 						if (gbullet1[i].value == 1)
