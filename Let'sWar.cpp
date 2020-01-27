@@ -42,6 +42,7 @@ SDL_Surface* gScreenSurface = NULL;
 SDL_Surface* gSurface1 = NULL;
 SDL_Surface* gSurface2 = NULL;
 SDL_Surface* gSurface3 = NULL;
+SDL_Surface* gSurface = NULL;
 
 //The image we will load and show on the screen
 SDL_Surface* Wallsurface= NULL;
@@ -50,6 +51,8 @@ SDL_Surface* background=NULL;
 //Textures
 SDL_Texture* gTexture1 = NULL, * gTexture2 = NULL;
 SDL_Texture* glaser = NULL;
+SDL_Texture* gTF1 = NULL; //Texture for the font of tank1 score
+SDL_Texture* gTF2 = NULL; //Texture for the font of tank2 score
 SDL_Texture* gborderx1 = NULL;
 SDL_Texture* gborderx2= NULL;
 SDL_Texture* gbordery1 = NULL;
@@ -77,10 +80,16 @@ SDL_Rect grect1;
 SDL_Rect grect2; 
 SDL_Rect LaserRect;
 SDL_Rect backrect={0,0,1280,790};
+SDL_Rect gRF1 = {600, 725, 50, 50}; //grect for the font of tank1 score 
+SDL_Rect gRF2  = {1200, 725, 50, 50};//grect for the font of tank2 score 
 
 //Musics and Audios
 Mix_Music *gMusic = NULL;
 Mix_Chunk *TB = NULL;//Tank Bullet sound
+
+//Fonts
+TTF_Font *Font = NULL;
+SDL_Color Color = {0, 0, 0};
 
 bool init()
 {
@@ -301,7 +310,7 @@ void loadMedia(int cn)
 
 
 
-//movement of tanks
+//movements of tanks
 
 void tankmoveup1()
 {
@@ -398,7 +407,7 @@ bool Tank(SDL_Event e, bool *quit)
     }
     if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RSHIFT)
     {
-        if (gtank2.bullet <= 7)
+        if (gtank2.bullet <= 5)
         {
 			Mix_PlayChannel( -1, TB, 0 );
             gtank2.bullet++;
@@ -448,6 +457,13 @@ void close()
 	// Quit SDL subsystems
 	// SDL_Quit();
 }
+
+void ShowScore()
+{
+    SDL_RenderCopy(gRenderer, gTF1, NULL, &gRF1);
+    SDL_RenderCopy(gRenderer, gTF2, NULL, &gRF2);
+}
+
 void lose()
 {
     if (gtank1.lose == true || gtank2.lose == true)
@@ -457,38 +473,34 @@ void lose()
         {
             if (gtank1.lose == false)
             {
+				gtank1.bullet = 0;
+				gtank2.bullet = 0;
                 gtank1.score++;
-               // gtank1.convert(gtank1.score, gtank1.number);
-               // gSurface = TTF_RenderText_Solid(font, gtank1.number, color);
-                //gTexture11 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+                gtank1.convert(gtank1.score, gtank1.number);
+                gSurface = TTF_RenderText_Solid(Font, gtank1.number, Color);
+                gTF1 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
             }
             else if (gtank2.lose == false)
             {
+				gtank1.bullet = 0;
+				gtank2.bullet = 0;
                 gtank2.score++;
-                //gtank2.convert(gtank2.score, gtank2.number);
-                //gSurface = TTF_RenderText_Solid(font, gtank2.number, color);
-                //gTexture22 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
+                gtank2.convert(gtank2.score, gtank2.number);
+                gSurface = TTF_RenderText_Solid(Font, gtank2.number, Color);
+                gTF2 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
             }
             gtank1.lose = false;
             gtank2.lose = false;
-           // gtank1.x = 100 * (rand() % 9) + 50;
-            //gtank1.y = 100 * (rand() % 6) + 50;
-            //do
-           // {
-                //gtank2.x = 100 * (rand() % 9) + 50;
-               // gtank2.y = 100 * (rand() % 6) + 50;
-           // } while (gtank1.x == gtank2.x && gtank1.y == gtank2.y);
-           // InitMap();
-           for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 gbullet1[i].value = 0;
                 gbullet2[i].value = 0;
             }
-             gtank1.bullet = 0;
+            gtank1.bullet = 0;
             // gtank1.laserflag = false;
              gtank2.bullet = 0;
             // gtank2.laserflag = false;
-             currentTime = 0;
+            currentTime = 0;
 			gtank1.x = 125;
     		gtank1.y = 55;
 
@@ -507,6 +519,8 @@ int main( int argc, char* args[] )
 {
     srand(time(0));
     map.setcn();
+	TTF_Init();
+	Font = TTF_OpenFont("Bloomsburg DEMO.ttf", 40);
 
 	//Start up SDL and create window   
 	if( !init() )
@@ -569,8 +583,6 @@ int main( int argc, char* args[] )
 						SDL_RenderCopy(gRenderer, walltexture_x6, NULL, &map.wallrectx6);
 						SDL_RenderCopy(gRenderer, walltexture_y1, NULL, &map.wallrecty1);
 						SDL_RenderCopy(gRenderer, walltexture_y2, NULL, &map.wallrecty2);
-					
-
 					}
 					
 					
@@ -580,6 +592,7 @@ int main( int argc, char* args[] )
 						SDL_RenderCopyEx(gRenderer, gTexture2, NULL, &grect2, degree2, NULL, SDL_FLIP_NONE);
 					if (laserflag == true)
 						SDL_RenderCopy(gRenderer, glaser, NULL, &LaserRect);
+					ShowScore();
 					for (int i = 0; i < 6; i++)
 					{
 						if (gbullet1[i].value == 1)
@@ -587,6 +600,7 @@ int main( int argc, char* args[] )
 						if (gbullet2[i].value == 1)
 							gbullet2[i].move();
 					}
+					CheckDraw();
 					lose();
 					SDL_RenderPresent(gRenderer);
 				} while (Tank(e, quit) && !*quit);

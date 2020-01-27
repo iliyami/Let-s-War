@@ -37,6 +37,7 @@ public:
             value = 0;
             lastTime = SDL_GetTicks();
             gtank1.lose = true;
+            gtank1.bullet = 6;
         }
         else if ((x - gtank2.x) * (x - gtank2.x) + (y - gtank2.y) * (y - gtank2.y) <= (rball + 18) * (rball + 18))
         {
@@ -44,6 +45,7 @@ public:
             value = 0;
             lastTime = SDL_GetTicks();
             gtank2.lose = true;
+            gtank2.bullet = 6;
         }
     }
     void collisionwallbullet()
