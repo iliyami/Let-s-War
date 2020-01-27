@@ -131,7 +131,6 @@ bool init()
 		BR = Mix_LoadWAV("Bullet reflect.wav");
 		Reloading = Mix_LoadWAV("Reload.wav");
 
-
 		if( gWindow == NULL )
 		{
 			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -166,7 +165,6 @@ bool init()
 			gSurface = SDL_LoadBMP("Numbers/7.bmp");
 			T7 = SDL_CreateTextureFromSurface(gRenderer, gSurface);
 
-
 	  		gtank1.x = 125;
     		gtank1.y = 55;
 			grect1.x = gtank1.x;
@@ -193,146 +191,125 @@ void loadMedia(int cn)
 			background=SDL_LoadBMP("yborder.bmp");
 			gbordery1 = SDL_CreateTextureFromSurface(gRenderer, background);
 			gbordery2 = SDL_CreateTextureFromSurface(gRenderer, background);
- 	if(cn==1)
-	 {
+ 	if (cn == 1)
+    {
 
+        map.wallrecty1.h = 200;
+        map.wallrecty2.h = 200;
 
-		 	map.wallrecty1.h=200;
-		    map.wallrecty2.h=200;
+        map.wallrecty4.h = 200;
+        map.wallrecty5.h = 200;
+        map.wallrecty3.h = 210;
 
-			map.wallrecty4.h=200;
-		    map.wallrecty5.h=200;
-			map.wallrecty3.h=210;
+        Wallsurface = SDL_LoadBMP("wallx.bmp");
+        walltexture_x1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wallx.bmp");
+        walltexture_x2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
 
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y3 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y4 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y5 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y3 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y4 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y5 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
 
-			map.wallrectx1.x=500;
-			map.wallrectx1.y=75;
+        map.wallrectx1.x = 500;
+        map.wallrectx1.y = 75;
 
-			map.wallrectx2.x=500;
-			map.wallrectx2.y=575;
+        map.wallrectx2.x = 500;
+        map.wallrectx2.y = 575;
 
-			map.wallrecty1.x=215;
-			map.wallrecty1.y=106.7;
+        map.wallrecty1.x = 215;
+        map.wallrecty1.y = 106.7;
 
-			map.wallrecty2.x=215;
-			map.wallrecty2.y=413.4;
+        map.wallrecty2.x = 215;
+        map.wallrecty2.y = 413.4;
 
-			map.wallrecty3.x=605;
-			map.wallrecty3.y=255;
+        map.wallrecty3.x = 605;
+        map.wallrecty3.y = 255;
 
-			map.wallrecty4.x=995;
-			map.wallrecty4.y=106.7;;
+        map.wallrecty4.x = 995;
+        map.wallrecty4.y = 106.7;
+        ;
 
-			map.wallrecty5.x=995;
-			map.wallrecty5.y=413.4;
-	}
- 		
-    if(cn==2)
-	{
-			map.wallrecty1.h=200;
-		    map.wallrecty2.h=200;
+        map.wallrecty5.x = 995;
+        map.wallrecty5.y = 413.4;
+    }
 
-			map.wallrecty4.h=200;
-		    map.wallrecty5.h=200;
+    if (cn == 2)
+    {
+        map.wallrecty1.h = 200;
+        map.wallrecty2.h = 200;
 
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y3 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y4 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y5 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        map.wallrecty4.h = 200;
+        map.wallrecty5.h = 200;
 
-			map.wallrectx1.x=500;
-			map.wallrectx1.y=325;
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y3 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y4 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y5 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
 
-			map.wallrecty1.x=215;
-			map.wallrecty1.y=106.7;
+        map.wallrecty1.x = 267.5;
+        map.wallrecty1.y = 106.7;
 
-			map.wallrecty2.x=215;
-			map.wallrecty2.y=413.4;
+        map.wallrecty2.x = 380;
+        map.wallrecty2.y = 413.4;
 
-			map.wallrecty3.x=605;
-			map.wallrecty3.y=220;
+        map.wallrecty3.x = 605;
+        map.wallrecty3.y = 106.6;
 
-			map.wallrecty4.x=995;
-			map.wallrecty4.y=106.7;;
+        map.wallrecty4.x = 942.5;
+        map.wallrecty4.y = 106.7;
+        ;
 
-			map.wallrecty5.x=995;
-			map.wallrecty5.y=413.4;
+        map.wallrecty5.x = 830;
+        map.wallrecty5.y = 413.4;
+    }
 
-	}
-    		
-    if(cn==3)
- 	{
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x3 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x4 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x5 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wallx.bmp");
-   			walltexture_x6 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
-			Wallsurface = SDL_LoadBMP("wally.bmp");
-   			walltexture_y2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+    if (cn == 3)
+    {
+        Wallsurface = SDL_LoadBMP("wallx.bmp");
+        walltexture_x1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wallx.bmp");
+        walltexture_x2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wallx.bmp");
+        walltexture_x3 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wallx.bmp");
+        walltexture_x4 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
 
-			map.wallrectx1.x=220;
-			map.wallrectx1.y=220;
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y1 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
+        Wallsurface = SDL_LoadBMP("wally.bmp");
+        walltexture_y2 = SDL_CreateTextureFromSurface(gRenderer, Wallsurface);
 
-			map.wallrectx2.x=500;
-			map.wallrectx2.y=220;
+        map.wallrectx1.x = 116;
+        map.wallrectx1.y = 150;
 
-			map.wallrectx3.x=780;
-			map.wallrectx3.y=220;
+        map.wallrectx2.x = 884;
+        map.wallrectx2.y = 150;
 
-			map.wallrectx4.x=220;
-			map.wallrectx4.y=430;
+        map.wallrectx3.x = 884;
+        map.wallrectx3.y = 500;
 
-			map.wallrectx5.x=500;
-			map.wallrectx5.y=430;
-			
-			map.wallrectx6.x=780;
-			map.wallrectx6.y=430;
+        map.wallrectx4.x = 116;
+        map.wallrectx4.y = 500;
 
-			map.wallrecty1.x=150;
-			map.wallrecty1.y=220;
+        map.wallrecty1.x = 512;
+        map.wallrecty1.y = 220;
 
-			map.wallrecty2.x=1060;
-			map.wallrecty2.y=220;
-			
-	}
-	
-	
-
-
+        map.wallrecty2.x = 698;
+        map.wallrecty2.y = 220;
+    }
 }
 
 
@@ -341,46 +318,4015 @@ void loadMedia(int cn)
 
 void tankmoveup1()
 {
-	 gtank1.dy = 0.2 * sin(-degree1 * 3.14 / 180);
-     gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
-	 gtank1.x -= gtank1.dx;
-     gtank1.y += gtank1.dy;
+
+    //map1 collision of walls
+    if (map.cn == 1)
+    {
+        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < -90 && degree1 > -180)
+        {
+            gtank1.dy = 0;
+            gtank1.dx = 0;
+            gtank1.x -= gtank1.dx;
+            gtank1.y += gtank1.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 0 && degree1 > -90)
+            {
+                gtank1.dy = 0;
+                gtank1.dx = 0;
+                gtank1.x -= gtank1.dx;
+                gtank1.y += gtank1.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 180 && degree1 > 90)
+                {
+                    gtank1.dy = 0;
+                    gtank1.dx = 0;
+                    gtank1.x -= gtank1.dx;
+                    gtank1.y += gtank1.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 90 && degree1 > 0)
+                    {
+                        gtank1.dy = 0;
+                        gtank1.dx = 0;
+                        gtank1.x -= gtank1.dx;
+                        gtank1.y += gtank1.dy;
+                    } //wallx1
+                    else
+                    {
+                        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && degree1 < 0)
+                        {
+                            gtank1.dy = 0;
+                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                            gtank1.x += gtank1.dx;
+                            gtank1.y -= gtank1.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && degree1 > 0)
+                            {
+                                gtank1.dy = 0;
+                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                gtank1.x += gtank1.dx;
+                                gtank1.y -= gtank1.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect1, &map.borderrecty1) == true && (degree1 > 90 || degree1 < -90))
+                                {
+                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                    gtank1.dx = 0;
+                                    gtank1.x += gtank1.dx;
+                                    gtank1.y -= gtank1.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 90 && degree1 > -90)
+                                    {
+                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                        gtank1.dx = 0;
+                                        gtank1.x += gtank1.dx;
+                                        gtank1.y -= gtank1.dy;
+                                    } //wallx1
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 > 0 && gtank1.y - 5 < map.wallrectx1.y && gtank1.x + 36 > map.wallrectx1.x && gtank1.x + 5 < map.wallrectx1.x + 280)
+                                        {
+                                            gtank1.dy = 0;
+                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                            gtank1.x += gtank1.dx;
+                                            gtank1.y -= gtank1.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 < 0 && gtank1.y + 5 > map.wallrectx1.y && gtank1.x + 36 > map.wallrectx1.x && gtank1.x + 5 < map.wallrectx1.x + 280)
+                                            {
+                                                gtank1.dy = 0;
+                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                gtank1.x += gtank1.dx;
+                                                gtank1.y -= gtank1.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrectx1.x + 150)
+                                                {
+                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                    gtank1.dx = 0;
+                                                    gtank1.x += gtank1.dx;
+                                                    gtank1.y -= gtank1.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrectx1.x + 150)
+                                                    {
+                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                        gtank1.dx = 0;
+                                                        gtank1.x += gtank1.dx;
+                                                        gtank1.y -= gtank1.dy;
+                                                    } //wallx2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 > 0 && gtank1.y - 5 < map.wallrectx2.y && gtank1.x + 36 > map.wallrectx2.x && gtank1.x + 5 < map.wallrectx2.x + 280)
+                                                        {
+                                                            gtank1.dy = 0;
+                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                            gtank1.x += gtank1.dx;
+                                                            gtank1.y -= gtank1.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 < 0 && gtank1.y + 5 > map.wallrectx2.y && gtank1.x + 36 > map.wallrectx2.x && gtank1.x + 5 < map.wallrectx2.x + 280)
+                                                            {
+                                                                gtank1.dy = 0;
+                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                gtank1.x += gtank1.dx;
+                                                                gtank1.y -= gtank1.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrectx2.x + 150)
+                                                                {
+                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                    gtank1.dx = 0;
+                                                                    gtank1.x += gtank1.dx;
+                                                                    gtank1.y -= gtank1.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrectx2.x + 150)
+                                                                    {
+                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                        gtank1.dx = 0;
+                                                                        gtank1.x += gtank1.dx;
+                                                                        gtank1.y -= gtank1.dy;
+                                                                    } //wally1
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                                                        {
+                                                                            gtank1.dy = 0;
+                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                            gtank1.x += gtank1.dx;
+                                                                            gtank1.y -= gtank1.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                                                            {
+                                                                                gtank1.dy = 0;
+                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                gtank1.x += gtank1.dx;
+                                                                                gtank1.y -= gtank1.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty1.x + 35)
+                                                                                {
+                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                    gtank1.dx = 0;
+                                                                                    gtank1.x += gtank1.dx;
+                                                                                    gtank1.y -= gtank1.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty1.x + 35)
+                                                                                    {
+                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                        gtank1.dx = 0;
+                                                                                        gtank1.x += gtank1.dx;
+                                                                                        gtank1.y -= gtank1.dy;
+                                                                                    } //wally2
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                                                        {
+                                                                                            gtank1.dy = 0;
+                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                            gtank1.x += gtank1.dx;
+                                                                                            gtank1.y -= gtank1.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                                                            {
+                                                                                                gtank1.dy = 0;
+                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                gtank1.x += gtank1.dx;
+                                                                                                gtank1.y -= gtank1.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty2.x + 35)
+                                                                                                {
+                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                    gtank1.dx = 0;
+                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty2.x + 35)
+                                                                                                    {
+                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                        gtank1.dx = 0;
+                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                    } //wally3
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty3.y && gtank1.x + 36 > map.wallrecty3.x && gtank1.x + 5 < map.wallrecty3.x + 70)
+                                                                                                        {
+                                                                                                            gtank1.dy = 0;
+                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                            gtank1.x += gtank1.dx;
+                                                                                                            gtank1.y -= gtank1.dy;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty3.y && gtank1.x + 36 > map.wallrecty3.x && gtank1.x + 5 < map.wallrecty3.x + 70)
+                                                                                                            {
+                                                                                                                gtank1.dy = 0;
+                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                gtank1.x += gtank1.dx;
+                                                                                                                gtank1.y -= gtank1.dy;
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty3.x + 35)
+                                                                                                                {
+                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                    gtank1.dx = 0;
+                                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty3.x + 35)
+                                                                                                                    {
+                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                        gtank1.dx = 0;
+                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                    } //wally4
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty4.y && gtank1.x + 36 > map.wallrecty4.x && gtank1.x + 5 < map.wallrecty4.x + 70)
+                                                                                                                        {
+                                                                                                                            gtank1.dy = 0;
+                                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                            gtank1.x += gtank1.dx;
+                                                                                                                            gtank1.y -= gtank1.dy;
+                                                                                                                        }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty4.y && gtank1.x + 36 > map.wallrecty4.x && gtank1.x + 5 < map.wallrecty4.x + 70)
+                                                                                                                            {
+                                                                                                                                gtank1.dy = 0;
+                                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                gtank1.x += gtank1.dx;
+                                                                                                                                gtank1.y -= gtank1.dy;
+                                                                                                                            }
+                                                                                                                            else
+                                                                                                                            {
+                                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty4.x + 35)
+                                                                                                                                {
+                                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                    gtank1.dx = 0;
+                                                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                {
+                                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty4.x + 35)
+                                                                                                                                    {
+                                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                        gtank1.dx = 0;
+                                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                                    } //wally5
+                                                                                                                                    else
+                                                                                                                                    {
+                                                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty5.y && gtank1.x + 36 > map.wallrecty5.x && gtank1.x + 5 < map.wallrecty5.x + 70)
+                                                                                                                                        {
+                                                                                                                                            gtank1.dy = 0;
+                                                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                            gtank1.x += gtank1.dx;
+                                                                                                                                            gtank1.y -= gtank1.dy;
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty5.y && gtank1.x + 36 > map.wallrecty5.x && gtank1.x + 5 < map.wallrecty5.x + 70)
+                                                                                                                                            {
+                                                                                                                                                gtank1.dy = 0;
+                                                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                gtank1.x += gtank1.dx;
+                                                                                                                                                gtank1.y -= gtank1.dy;
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty5.x + 35)
+                                                                                                                                                {
+                                                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                    gtank1.dx = 0;
+                                                                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty5.x + 35)
+                                                                                                                                                    {
+                                                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                        gtank1.dx = 0;
+                                                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                                                    } //default
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        gtank1.dy = 0.2 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (map.cn == 2)
+    {
+
+        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < -90 && degree1 > -180)
+        {
+            gtank1.dy = 0;
+            gtank1.dx = 0;
+            gtank1.x -= gtank1.dx;
+            gtank1.y += gtank1.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 0 && degree1 > -90)
+            {
+                gtank1.dy = 0;
+                gtank1.dx = 0;
+                gtank1.x -= gtank1.dx;
+                gtank1.y += gtank1.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 180 && degree1 > 90)
+                {
+                    gtank1.dy = 0;
+                    gtank1.dx = 0;
+                    gtank1.x -= gtank1.dx;
+                    gtank1.y += gtank1.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 90 && degree1 > 0)
+                    {
+                        gtank1.dy = 0;
+                        gtank1.dx = 0;
+                        gtank1.x -= gtank1.dx;
+                        gtank1.y += gtank1.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && degree1 < 0)
+                        {
+                            gtank1.dy = 0;
+                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                            gtank1.x += gtank1.dx;
+                            gtank1.y -= gtank1.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && degree1 > 0)
+                            {
+                                gtank1.dy = 0;
+                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                gtank1.x += gtank1.dx;
+                                gtank1.y -= gtank1.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect1, &map.borderrecty1) == true && (degree1 > 90 || degree1 < -90))
+                                {
+                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                    gtank1.dx = 0;
+                                    gtank1.x += gtank1.dx;
+                                    gtank1.y -= gtank1.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 90 && degree1 > -90)
+                                    {
+                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                        gtank1.dx = 0;
+                                        gtank1.x += gtank1.dx;
+                                        gtank1.y -= gtank1.dy;
+                                    } //wallx1
+
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                        {
+                                            gtank1.dy = 0;
+                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                            gtank1.x += gtank1.dx;
+                                            gtank1.y -= gtank1.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                            {
+                                                gtank1.dy = 0;
+                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                gtank1.x += gtank1.dx;
+                                                gtank1.y -= gtank1.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty1.x + 35)
+                                                {
+                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                    gtank1.dx = 0;
+                                                    gtank1.x += gtank1.dx;
+                                                    gtank1.y -= gtank1.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty1.x + 35)
+                                                    {
+                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                        gtank1.dx = 0;
+                                                        gtank1.x += gtank1.dx;
+                                                        gtank1.y -= gtank1.dy;
+                                                    } //wally2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                        {
+                                                            gtank1.dy = 0;
+                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                            gtank1.x += gtank1.dx;
+                                                            gtank1.y -= gtank1.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                            {
+                                                                gtank1.dy = 0;
+                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                gtank1.x += gtank1.dx;
+                                                                gtank1.y -= gtank1.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty2.x + 35)
+                                                                {
+                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                    gtank1.dx = 0;
+                                                                    gtank1.x += gtank1.dx;
+                                                                    gtank1.y -= gtank1.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty2.x + 35)
+                                                                    {
+                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                        gtank1.dx = 0;
+                                                                        gtank1.x += gtank1.dx;
+                                                                        gtank1.y -= gtank1.dy;
+                                                                    } //wally3
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty3.y && gtank1.x + 36 > map.wallrecty3.x && gtank1.x + 5 < map.wallrecty3.x + 70)
+                                                                        {
+                                                                            gtank1.dy = 0;
+                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                            gtank1.x += gtank1.dx;
+                                                                            gtank1.y -= gtank1.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty3.y && gtank1.x + 36 > map.wallrecty3.x && gtank1.x + 5 < map.wallrecty3.x + 70)
+                                                                            {
+                                                                                gtank1.dy = 0;
+                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                gtank1.x += gtank1.dx;
+                                                                                gtank1.y -= gtank1.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty3.x + 35)
+                                                                                {
+                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                    gtank1.dx = 0;
+                                                                                    gtank1.x += gtank1.dx;
+                                                                                    gtank1.y -= gtank1.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty3.x + 35)
+                                                                                    {
+                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                        gtank1.dx = 0;
+                                                                                        gtank1.x += gtank1.dx;
+                                                                                        gtank1.y -= gtank1.dy;
+                                                                                    } //wally4
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty4.y && gtank1.x + 36 > map.wallrecty4.x && gtank1.x + 5 < map.wallrecty4.x + 70)
+                                                                                        {
+                                                                                            gtank1.dy = 0;
+                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                            gtank1.x += gtank1.dx;
+                                                                                            gtank1.y -= gtank1.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty4.y && gtank1.x + 36 > map.wallrecty4.x && gtank1.x + 5 < map.wallrecty4.x + 70)
+                                                                                            {
+                                                                                                gtank1.dy = 0;
+                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                gtank1.x += gtank1.dx;
+                                                                                                gtank1.y -= gtank1.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty4.x + 35)
+                                                                                                {
+                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                    gtank1.dx = 0;
+                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty4.x + 35)
+                                                                                                    {
+                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                        gtank1.dx = 0;
+                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                    } //wally5
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty5.y && gtank1.x + 36 > map.wallrecty5.x && gtank1.x + 5 < map.wallrecty5.x + 70)
+                                                                                                        {
+                                                                                                            gtank1.dy = 0;
+                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                            gtank1.x += gtank1.dx;
+                                                                                                            gtank1.y -= gtank1.dy;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty5.y && gtank1.x + 36 > map.wallrecty5.x && gtank1.x + 5 < map.wallrecty5.x + 70)
+                                                                                                            {
+                                                                                                                gtank1.dy = 0;
+                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                gtank1.x += gtank1.dx;
+                                                                                                                gtank1.y -= gtank1.dy;
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty5.x + 35)
+                                                                                                                {
+                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                    gtank1.dx = 0;
+                                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty5.x + 35)
+                                                                                                                    {
+                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                        gtank1.dx = 0;
+                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                    } //default
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        gtank1.dy = 0.2 * sin(-degree1 * 3.14 / 180);
+                                                                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (map.cn == 3)
+    {
+
+        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < -90 && degree1 > -180)
+        {
+            gtank1.dy = 0;
+            gtank1.dx = 0;
+            gtank1.x -= gtank1.dx;
+            gtank1.y += gtank1.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 0 && degree1 > -90)
+            {
+                gtank1.dy = 0;
+                gtank1.dx = 0;
+                gtank1.x -= gtank1.dx;
+                gtank1.y += gtank1.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 180 && degree1 > 90)
+                {
+                    gtank1.dy = 0;
+                    gtank1.dx = 0;
+                    gtank1.x -= gtank1.dx;
+                    gtank1.y += gtank1.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 90 && degree1 > 0)
+                    {
+                        gtank1.dy = 0;
+                        gtank1.dx = 0;
+                        gtank1.x -= gtank1.dx;
+                        gtank1.y += gtank1.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && degree1 < 0)
+                        {
+                            gtank1.dy = 0;
+                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                            gtank1.x += gtank1.dx;
+                            gtank1.y -= gtank1.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && degree1 > 0)
+                            {
+                                gtank1.dy = 0;
+                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                gtank1.x += gtank1.dx;
+                                gtank1.y -= gtank1.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect1, &map.borderrecty1) == true && (degree1 > 90 || degree1 < -90))
+                                {
+                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                    gtank1.dx = 0;
+                                    gtank1.x += gtank1.dx;
+                                    gtank1.y -= gtank1.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 90 && degree1 > -90)
+                                    {
+                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                        gtank1.dx = 0;
+                                        gtank1.x += gtank1.dx;
+                                        gtank1.y -= gtank1.dy;
+                                    } //wallx1
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 > 0 && gtank1.y - 5 < map.wallrectx1.y && gtank1.x + 36 > map.wallrectx1.x && gtank1.x + 5 < map.wallrectx1.x + 280)
+                                        {
+                                            gtank1.dy = 0;
+                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                            gtank1.x += gtank1.dx;
+                                            gtank1.y -= gtank1.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 < 0 && gtank1.y + 5 > map.wallrectx1.y && gtank1.x + 36 > map.wallrectx1.x && gtank1.x + 5 < map.wallrectx1.x + 280)
+                                            {
+                                                gtank1.dy = 0;
+                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                gtank1.x += gtank1.dx;
+                                                gtank1.y -= gtank1.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrectx1.x + 150)
+                                                {
+                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                    gtank1.dx = 0;
+                                                    gtank1.x += gtank1.dx;
+                                                    gtank1.y -= gtank1.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrectx1.x + 150)
+                                                    {
+                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                        gtank1.dx = 0;
+                                                        gtank1.x += gtank1.dx;
+                                                        gtank1.y -= gtank1.dy;
+                                                    } //wallx2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 > 0 && gtank1.y - 5 < map.wallrectx2.y && gtank1.x + 36 > map.wallrectx2.x && gtank1.x + 5 < map.wallrectx2.x + 280)
+                                                        {
+                                                            gtank1.dy = 0;
+                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                            gtank1.x += gtank1.dx;
+                                                            gtank1.y -= gtank1.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 < 0 && gtank1.y + 5 > map.wallrectx2.y && gtank1.x + 36 > map.wallrectx2.x && gtank1.x + 5 < map.wallrectx2.x + 280)
+                                                            {
+                                                                gtank1.dy = 0;
+                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                gtank1.x += gtank1.dx;
+                                                                gtank1.y -= gtank1.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrectx2.x + 150)
+                                                                {
+                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                    gtank1.dx = 0;
+                                                                    gtank1.x += gtank1.dx;
+                                                                    gtank1.y -= gtank1.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrectx2.x + 150)
+                                                                    {
+                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                        gtank1.dx = 0;
+                                                                        gtank1.x += gtank1.dx;
+                                                                        gtank1.y -= gtank1.dy;
+                                                                    } //wallx3
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect1, &map.wallrectx3) == true && degree1 > 0 && gtank1.y - 5 < map.wallrectx3.y && gtank1.x + 36 > map.wallrectx3.x && gtank1.x + 5 < map.wallrectx3.x + 280)
+                                                                        {
+                                                                            gtank1.dy = 0;
+                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                            gtank1.x += gtank1.dx;
+                                                                            gtank1.y -= gtank1.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect1, &map.wallrectx3) == true && degree1 < 0 && gtank1.y + 5 > map.wallrectx3.y && gtank1.x + 36 > map.wallrectx3.x && gtank1.x + 5 < map.wallrectx3.x + 280)
+                                                                            {
+                                                                                gtank1.dy = 0;
+                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                gtank1.x += gtank1.dx;
+                                                                                gtank1.y -= gtank1.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect1, &map.wallrectx3) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrectx3.x + 150)
+                                                                                {
+                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                    gtank1.dx = 0;
+                                                                                    gtank1.x += gtank1.dx;
+                                                                                    gtank1.y -= gtank1.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx3) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrectx3.x + 150)
+                                                                                    {
+                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                        gtank1.dx = 0;
+                                                                                        gtank1.x += gtank1.dx;
+                                                                                        gtank1.y -= gtank1.dy;
+                                                                                    } //wallx4
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrectx4) == true && degree1 > 0 && gtank1.y - 5 < map.wallrectx4.y && gtank1.x + 36 > map.wallrectx4.x && gtank1.x + 5 < map.wallrectx4.x + 280)
+                                                                                        {
+                                                                                            gtank1.dy = 0;
+                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                            gtank1.x += gtank1.dx;
+                                                                                            gtank1.y -= gtank1.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrectx4) == true && degree1 < 0 && gtank1.y + 5 > map.wallrectx4.y && gtank1.x + 36 > map.wallrectx4.x && gtank1.x + 5 < map.wallrectx4.x + 280)
+                                                                                            {
+                                                                                                gtank1.dy = 0;
+                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                gtank1.x += gtank1.dx;
+                                                                                                gtank1.y -= gtank1.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrectx4) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrectx4.x + 150)
+                                                                                                {
+                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                    gtank1.dx = 0;
+                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx4) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrectx4.x + 150)
+                                                                                                    {
+                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                        gtank1.dx = 0;
+                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                    } //wa
+																									 else
+                                                                                                        {
+                                                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                                                                                                                        {
+                                                                                                                                            gtank1.dy = 0;
+                                                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                            gtank1.x += gtank1.dx;
+                                                                                                                                            gtank1.y -= gtank1.dy;
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                                                                                                                            {
+                                                                                                                                                gtank1.dy = 0;
+                                                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                gtank1.x += gtank1.dx;
+                                                                                                                                                gtank1.y -= gtank1.dy;
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty1.x + 35)
+                                                                                                                                                {
+                                                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                    gtank1.dx = 0;
+                                                                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty1.x + 35)
+                                                                                                                                                    {
+                                                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                        gtank1.dx = 0;
+                                                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                                                    } //wally2
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 0 && gtank1.y - 5 < map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                                                                                                                        {
+                                                                                                                                                            gtank1.dy = 0;
+                                                                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                            gtank1.x += gtank1.dx;
+                                                                                                                                                            gtank1.y -= gtank1.dy;
+                                                                                                                                                        }
+                                                                                                                                                        else
+                                                                                                                                                        {
+                                                                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 0 && gtank1.y + 5 > map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                                                                                                                            {
+                                                                                                                                                                gtank1.dy = 0;
+                                                                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                                gtank1.x += gtank1.dx;
+                                                                                                                                                                gtank1.y -= gtank1.dy;
+                                                                                                                                                            }
+                                                                                                                                                            else
+                                                                                                                                                            {
+                                                                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && (degree1 > 90 || degree1 < -90) && gtank1.x > map.wallrecty2.x + 35)
+                                                                                                                                                                {
+                                                                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                                    gtank1.dx = 0;
+                                                                                                                                                                    gtank1.x += gtank1.dx;
+                                                                                                                                                                    gtank1.y -= gtank1.dy;
+                                                                                                                                                                }
+                                                                                                                                                                else
+                                                                                                                                                                {
+                                                                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 90 && degree1 > -90 && gtank1.x < map.wallrecty2.x + 35)
+                                                                                                                                                                    {
+                                                                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                                        gtank1.dx = 0;
+                                                                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                                                                    } //default
+                                                                                                                                                                    else
+                                                                                                                                                                    {
+                                                                                                                                                                        gtank1.dy = 0.2 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                                        gtank1.x += gtank1.dx;
+                                                                                                                                                                        gtank1.y -= gtank1.dy;
+                                                                                                                                                            
+                                                                                                                                                                
+                                                                                                                                                            
+                                                                                                                                                        
+                                                                                                                                                    
+                                                                                                                                                
+                                                                                                                                            
+                                                                                                                                        
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-void tankmovedw1()
-{
-	 gtank1.dy = 0.2 * sin(-degree1 * 3.14 / 180);
-     gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
-	 gtank1.x += gtank1.dx;
-     gtank1.y -= gtank1.dy;
-     
-}
+
 void tankmoveup2()
 {
-	 gtank2.dy = 0.2 * sin(-degree2 * 3.14 / 180);
-     gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
-	 gtank2.x -= gtank2.dx;
-     gtank2.y += gtank2.dy;
+    //map1 collision of walls
+    if (map.cn == 1)
+    {
+
+        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < -90 && degree2 > -180)
+        {
+            gtank2.dy = 0;
+            gtank2.dx = 0;
+            gtank2.x -= gtank2.dx;
+            gtank2.y += gtank2.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 0 && degree2 > -90)
+            {
+                gtank2.dy = 0;
+                gtank2.dx = 0;
+                gtank2.x -= gtank2.dx;
+                gtank2.y += gtank2.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 180 && degree2 > 90)
+                {
+                    gtank2.dy = 0;
+                    gtank2.dx = 0;
+                    gtank2.x -= gtank2.dx;
+                    gtank2.y += gtank2.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 90 && degree2 > 0)
+                    {
+                        gtank2.dy = 0;
+                        gtank2.dx = 0;
+                        gtank2.x -= gtank2.dx;
+                        gtank2.y += gtank2.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && degree2 < 0)
+                        {
+                            gtank2.dy = 0;
+                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                            gtank2.x += gtank2.dx;
+                            gtank2.y -= gtank2.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && degree2 > 0)
+                            {
+                                gtank2.dy = 0;
+                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                gtank2.x += gtank2.dx;
+                                gtank2.y -= gtank2.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect2, &map.borderrecty1) == true && (degree2 > 90 || degree2 < -90))
+                                {
+                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                    gtank2.dx = 0;
+                                    gtank2.x += gtank2.dx;
+                                    gtank2.y -= gtank2.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 90 && degree2 > -90)
+                                    {
+                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                        gtank2.dx = 0;
+                                        gtank2.x += gtank2.dx;
+                                        gtank2.y -= gtank2.dy;
+                                    } //wallx1
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 > 0 && gtank2.y - 5 < map.wallrectx1.y && gtank2.x + 36 > map.wallrectx1.x && gtank2.x + 5 < map.wallrectx1.x + 280)
+                                        {
+                                            gtank2.dy = 0;
+                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                            gtank2.x += gtank2.dx;
+                                            gtank2.y -= gtank2.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 < 0 && gtank2.y + 5 > map.wallrectx1.y && gtank2.x + 36 > map.wallrectx1.x && gtank2.x + 5 < map.wallrectx1.x + 280)
+                                            {
+                                                gtank2.dy = 0;
+                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                gtank2.x += gtank2.dx;
+                                                gtank2.y -= gtank2.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrectx1.x + 150)
+                                                {
+                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                    gtank2.dx = 0;
+                                                    gtank2.x += gtank2.dx;
+                                                    gtank2.y -= gtank2.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrectx1.x + 150)
+                                                    {
+                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                        gtank2.dx = 0;
+                                                        gtank2.x += gtank2.dx;
+                                                        gtank2.y -= gtank2.dy;
+                                                    } //wallx2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 > 0 && gtank2.y - 5 < map.wallrectx2.y && gtank2.x + 36 > map.wallrectx2.x && gtank2.x + 5 < map.wallrectx2.x + 280)
+                                                        {
+                                                            gtank2.dy = 0;
+                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                            gtank2.x += gtank2.dx;
+                                                            gtank2.y -= gtank2.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 < 0 && gtank2.y + 5 > map.wallrectx2.y && gtank2.x + 36 > map.wallrectx2.x && gtank2.x + 5 < map.wallrectx2.x + 280)
+                                                            {
+                                                                gtank2.dy = 0;
+                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                gtank2.x += gtank2.dx;
+                                                                gtank2.y -= gtank2.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrectx2.x + 150)
+                                                                {
+                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                    gtank2.dx = 0;
+                                                                    gtank2.x += gtank2.dx;
+                                                                    gtank2.y -= gtank2.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrectx2.x + 150)
+                                                                    {
+                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                        gtank2.dx = 0;
+                                                                        gtank2.x += gtank2.dx;
+                                                                        gtank2.y -= gtank2.dy;
+                                                                    } //wally1
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                                                        {
+                                                                            gtank2.dy = 0;
+                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                            gtank2.x += gtank2.dx;
+                                                                            gtank2.y -= gtank2.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                                                            {
+                                                                                gtank2.dy = 0;
+                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                gtank2.x += gtank2.dx;
+                                                                                gtank2.y -= gtank2.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty1.x + 35)
+                                                                                {
+                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                    gtank2.dx = 0;
+                                                                                    gtank2.x += gtank2.dx;
+                                                                                    gtank2.y -= gtank2.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty1.x + 35)
+                                                                                    {
+                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                        gtank2.dx = 0;
+                                                                                        gtank2.x += gtank2.dx;
+                                                                                        gtank2.y -= gtank2.dy;
+                                                                                    } //wally2
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                                                        {
+                                                                                            gtank2.dy = 0;
+                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                            gtank2.x += gtank2.dx;
+                                                                                            gtank2.y -= gtank2.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                                                            {
+                                                                                                gtank2.dy = 0;
+                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                gtank2.x += gtank2.dx;
+                                                                                                gtank2.y -= gtank2.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty2.x + 35)
+                                                                                                {
+                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                    gtank2.dx = 0;
+                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty2.x + 35)
+                                                                                                    {
+                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                        gtank2.dx = 0;
+                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                    } //wally3
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty3.y && gtank2.x + 36 > map.wallrecty3.x && gtank2.x + 5 < map.wallrecty3.x + 70)
+                                                                                                        {
+                                                                                                            gtank2.dy = 0;
+                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                            gtank2.x += gtank2.dx;
+                                                                                                            gtank2.y -= gtank2.dy;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty3.y && gtank2.x + 36 > map.wallrecty3.x && gtank2.x + 5 < map.wallrecty3.x + 70)
+                                                                                                            {
+                                                                                                                gtank2.dy = 0;
+                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                gtank2.x += gtank2.dx;
+                                                                                                                gtank2.y -= gtank2.dy;
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty3.x + 35)
+                                                                                                                {
+                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                    gtank2.dx = 0;
+                                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty3.x + 35)
+                                                                                                                    {
+                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                        gtank2.dx = 0;
+                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                    } //wally4
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty4.y && gtank2.x + 36 > map.wallrecty4.x && gtank2.x + 5 < map.wallrecty4.x + 70)
+                                                                                                                        {
+                                                                                                                            gtank2.dy = 0;
+                                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                            gtank2.x += gtank2.dx;
+                                                                                                                            gtank2.y -= gtank2.dy;
+                                                                                                                        }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty4.y && gtank2.x + 36 > map.wallrecty4.x && gtank2.x + 5 < map.wallrecty4.x + 70)
+                                                                                                                            {
+                                                                                                                                gtank2.dy = 0;
+                                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                gtank2.x += gtank2.dx;
+                                                                                                                                gtank2.y -= gtank2.dy;
+                                                                                                                            }
+                                                                                                                            else
+                                                                                                                            {
+                                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty4.x + 35)
+                                                                                                                                {
+                                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                    gtank2.dx = 0;
+                                                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                {
+                                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty4.x + 35)
+                                                                                                                                    {
+                                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                        gtank2.dx = 0;
+                                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                                    } //wally5
+                                                                                                                                    else
+                                                                                                                                    {
+                                                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty5.y && gtank2.x + 36 > map.wallrecty5.x && gtank2.x + 5 < map.wallrecty5.x + 70)
+                                                                                                                                        {
+                                                                                                                                            gtank2.dy = 0;
+                                                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                            gtank2.x += gtank2.dx;
+                                                                                                                                            gtank2.y -= gtank2.dy;
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty5.y && gtank2.x + 36 > map.wallrecty5.x && gtank2.x + 5 < map.wallrecty5.x + 70)
+                                                                                                                                            {
+                                                                                                                                                gtank2.dy = 0;
+                                                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                gtank2.x += gtank2.dx;
+                                                                                                                                                gtank2.y -= gtank2.dy;
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty5.x + 35)
+                                                                                                                                                {
+                                                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                    gtank2.dx = 0;
+                                                                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty5.x + 35)
+                                                                                                                                                    {
+                                                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                        gtank2.dx = 0;
+                                                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                                                    } //default
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        gtank2.dy = 0.2 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                        gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (map.cn == 2)
+    {
+
+        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < -90 && degree2 > -180)
+        {
+            gtank2.dy = 0;
+            gtank2.dx = 0;
+            gtank2.x -= gtank2.dx;
+            gtank2.y += gtank2.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 0 && degree2 > -90)
+            {
+                gtank2.dy = 0;
+                gtank2.dx = 0;
+                gtank2.x -= gtank2.dx;
+                gtank2.y += gtank2.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 180 && degree2 > 90)
+                {
+                    gtank2.dy = 0;
+                    gtank2.dx = 0;
+                    gtank2.x -= gtank2.dx;
+                    gtank2.y += gtank2.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 90 && degree2 > 0)
+                    {
+                        gtank2.dy = 0;
+                        gtank2.dx = 0;
+                        gtank2.x -= gtank2.dx;
+                        gtank2.y += gtank2.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && degree2 < 0)
+                        {
+                            gtank2.dy = 0;
+                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                            gtank2.x += gtank2.dx;
+                            gtank2.y -= gtank2.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && degree2 > 0)
+                            {
+                                gtank2.dy = 0;
+                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                gtank2.x += gtank2.dx;
+                                gtank2.y -= gtank2.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect2, &map.borderrecty1) == true && (degree2 > 90 || degree2 < -90))
+                                {
+                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                    gtank2.dx = 0;
+                                    gtank2.x += gtank2.dx;
+                                    gtank2.y -= gtank2.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 90 && degree2 > -90)
+                                    {
+                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                        gtank2.dx = 0;
+                                        gtank2.x += gtank2.dx;
+                                        gtank2.y -= gtank2.dy;
+                                    } //wallx1
+
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                        {
+                                            gtank2.dy = 0;
+                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                            gtank2.x += gtank2.dx;
+                                            gtank2.y -= gtank2.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                            {
+                                                gtank2.dy = 0;
+                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                gtank2.x += gtank2.dx;
+                                                gtank2.y -= gtank2.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty1.x + 35)
+                                                {
+                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                    gtank2.dx = 0;
+                                                    gtank2.x += gtank2.dx;
+                                                    gtank2.y -= gtank2.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty1.x + 35)
+                                                    {
+                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                        gtank2.dx = 0;
+                                                        gtank2.x += gtank2.dx;
+                                                        gtank2.y -= gtank2.dy;
+                                                    } //wally2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                        {
+                                                            gtank2.dy = 0;
+                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                            gtank2.x += gtank2.dx;
+                                                            gtank2.y -= gtank2.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                            {
+                                                                gtank2.dy = 0;
+                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                gtank2.x += gtank2.dx;
+                                                                gtank2.y -= gtank2.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty2.x + 35)
+                                                                {
+                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                    gtank2.dx = 0;
+                                                                    gtank2.x += gtank2.dx;
+                                                                    gtank2.y -= gtank2.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty2.x + 35)
+                                                                    {
+                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                        gtank2.dx = 0;
+                                                                        gtank2.x += gtank2.dx;
+                                                                        gtank2.y -= gtank2.dy;
+                                                                    } //wally3
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty3.y && gtank2.x + 36 > map.wallrecty3.x && gtank2.x + 5 < map.wallrecty3.x + 70)
+                                                                        {
+                                                                            gtank2.dy = 0;
+                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                            gtank2.x += gtank2.dx;
+                                                                            gtank2.y -= gtank2.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty3.y && gtank2.x + 36 > map.wallrecty3.x && gtank2.x + 5 < map.wallrecty3.x + 70)
+                                                                            {
+                                                                                gtank2.dy = 0;
+                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                gtank2.x += gtank2.dx;
+                                                                                gtank2.y -= gtank2.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty3.x + 35)
+                                                                                {
+                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                    gtank2.dx = 0;
+                                                                                    gtank2.x += gtank2.dx;
+                                                                                    gtank2.y -= gtank2.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty3.x + 35)
+                                                                                    {
+                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                        gtank2.dx = 0;
+                                                                                        gtank2.x += gtank2.dx;
+                                                                                        gtank2.y -= gtank2.dy;
+                                                                                    } //wally4
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty4.y && gtank2.x + 36 > map.wallrecty4.x && gtank2.x + 5 < map.wallrecty4.x + 70)
+                                                                                        {
+                                                                                            gtank2.dy = 0;
+                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                            gtank2.x += gtank2.dx;
+                                                                                            gtank2.y -= gtank2.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty4.y && gtank2.x + 36 > map.wallrecty4.x && gtank2.x + 5 < map.wallrecty4.x + 70)
+                                                                                            {
+                                                                                                gtank2.dy = 0;
+                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                gtank2.x += gtank2.dx;
+                                                                                                gtank2.y -= gtank2.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty4.x + 35)
+                                                                                                {
+                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                    gtank2.dx = 0;
+                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty4.x + 35)
+                                                                                                    {
+                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                        gtank2.dx = 0;
+                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                    } //wally5
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty5.y && gtank2.x + 36 > map.wallrecty5.x && gtank2.x + 5 < map.wallrecty5.x + 70)
+                                                                                                        {
+                                                                                                            gtank2.dy = 0;
+                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                            gtank2.x += gtank2.dx;
+                                                                                                            gtank2.y -= gtank2.dy;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty5.y && gtank2.x + 36 > map.wallrecty5.x && gtank2.x + 5 < map.wallrecty5.x + 70)
+                                                                                                            {
+                                                                                                                gtank2.dy = 0;
+                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                gtank2.x += gtank2.dx;
+                                                                                                                gtank2.y -= gtank2.dy;
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty5.x + 35)
+                                                                                                                {
+                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                    gtank2.dx = 0;
+                                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty5.x + 35)
+                                                                                                                    {
+                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                        gtank2.dx = 0;
+                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                    } //default
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        gtank2.dy = 0.2 * sin(-degree2 * 3.14 / 180);
+                                                                                                                        gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (map.cn == 3)
+    {
+
+        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < -90 && degree2 > -180)
+        {
+            gtank2.dy = 0;
+            gtank2.dx = 0;
+            gtank2.x -= gtank2.dx;
+            gtank2.y += gtank2.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 0 && degree2 > -90)
+            {
+                gtank2.dy = 0;
+                gtank2.dx = 0;
+                gtank2.x -= gtank2.dx;
+                gtank2.y += gtank2.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 180 && degree2 > 90)
+                {
+                    gtank2.dy = 0;
+                    gtank2.dx = 0;
+                    gtank2.x -= gtank2.dx;
+                    gtank2.y += gtank2.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 90 && degree2 > 0)
+                    {
+                        gtank2.dy = 0;
+                        gtank2.dx = 0;
+                        gtank2.x -= gtank2.dx;
+                        gtank2.y += gtank2.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && degree2 < 0)
+                        {
+                            gtank2.dy = 0;
+                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                            gtank2.x += gtank2.dx;
+                            gtank2.y -= gtank2.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && degree2 > 0)
+                            {
+                                gtank2.dy = 0;
+                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                gtank2.x += gtank2.dx;
+                                gtank2.y -= gtank2.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect2, &map.borderrecty1) == true && (degree2 > 90 || degree2 < -90))
+                                {
+                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                    gtank2.dx = 0;
+                                    gtank2.x += gtank2.dx;
+                                    gtank2.y -= gtank2.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 90 && degree2 > -90)
+                                    {
+                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                        gtank2.dx = 0;
+                                        gtank2.x += gtank2.dx;
+                                        gtank2.y -= gtank2.dy;
+                                    } //wallx1
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 > 0 && gtank2.y - 5 < map.wallrectx1.y && gtank2.x + 36 > map.wallrectx1.x && gtank2.x + 5 < map.wallrectx1.x + 280)
+                                        {
+                                            gtank2.dy = 0;
+                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                            gtank2.x += gtank2.dx;
+                                            gtank2.y -= gtank2.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 < 0 && gtank2.y + 5 > map.wallrectx1.y && gtank2.x + 36 > map.wallrectx1.x && gtank2.x + 5 < map.wallrectx1.x + 280)
+                                            {
+                                                gtank2.dy = 0;
+                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                gtank2.x += gtank2.dx;
+                                                gtank2.y -= gtank2.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrectx1.x + 150)
+                                                {
+                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                    gtank2.dx = 0;
+                                                    gtank2.x += gtank2.dx;
+                                                    gtank2.y -= gtank2.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrectx1.x + 150)
+                                                    {
+                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                        gtank2.dx = 0;
+                                                        gtank2.x += gtank2.dx;
+                                                        gtank2.y -= gtank2.dy;
+                                                    } //wallx2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 > 0 && gtank2.y - 5 < map.wallrectx2.y && gtank2.x + 36 > map.wallrectx2.x && gtank2.x + 5 < map.wallrectx2.x + 280)
+                                                        {
+                                                            gtank2.dy = 0;
+                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                            gtank2.x += gtank2.dx;
+                                                            gtank2.y -= gtank2.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 < 0 && gtank2.y + 5 > map.wallrectx2.y && gtank2.x + 36 > map.wallrectx2.x && gtank2.x + 5 < map.wallrectx2.x + 280)
+                                                            {
+                                                                gtank2.dy = 0;
+                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                gtank2.x += gtank2.dx;
+                                                                gtank2.y -= gtank2.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrectx2.x + 150)
+                                                                {
+                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                    gtank2.dx = 0;
+                                                                    gtank2.x += gtank2.dx;
+                                                                    gtank2.y -= gtank2.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrectx2.x + 150)
+                                                                    {
+                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                        gtank2.dx = 0;
+                                                                        gtank2.x += gtank2.dx;
+                                                                        gtank2.y -= gtank2.dy;
+                                                                    } //wallx3
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect2, &map.wallrectx3) == true && degree2 > 0 && gtank2.y - 5 < map.wallrectx3.y && gtank2.x + 36 > map.wallrectx3.x && gtank2.x + 5 < map.wallrectx3.x + 280)
+                                                                        {
+                                                                            gtank2.dy = 0;
+                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                            gtank2.x += gtank2.dx;
+                                                                            gtank2.y -= gtank2.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect2, &map.wallrectx3) == true && degree2 < 0 && gtank2.y + 5 > map.wallrectx3.y && gtank2.x + 36 > map.wallrectx3.x && gtank2.x + 5 < map.wallrectx3.x + 280)
+                                                                            {
+                                                                                gtank2.dy = 0;
+                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                gtank2.x += gtank2.dx;
+                                                                                gtank2.y -= gtank2.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect2, &map.wallrectx3) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrectx3.x + 150)
+                                                                                {
+                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                    gtank2.dx = 0;
+                                                                                    gtank2.x += gtank2.dx;
+                                                                                    gtank2.y -= gtank2.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx3) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrectx3.x + 150)
+                                                                                    {
+                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                        gtank2.dx = 0;
+                                                                                        gtank2.x += gtank2.dx;
+                                                                                        gtank2.y -= gtank2.dy;
+                                                                                    } //wallx4
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrectx4) == true && degree2 > 0 && gtank2.y - 5 < map.wallrectx4.y && gtank2.x + 36 > map.wallrectx4.x && gtank2.x + 5 < map.wallrectx4.x + 280)
+                                                                                        {
+                                                                                            gtank2.dy = 0;
+                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                            gtank2.x += gtank2.dx;
+                                                                                            gtank2.y -= gtank2.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrectx4) == true && degree2 < 0 && gtank2.y + 5 > map.wallrectx4.y && gtank2.x + 36 > map.wallrectx4.x && gtank2.x + 5 < map.wallrectx4.x + 280)
+                                                                                            {
+                                                                                                gtank2.dy = 0;
+                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                gtank2.x += gtank2.dx;
+                                                                                                gtank2.y -= gtank2.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrectx4) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrectx4.x + 150)
+                                                                                                {
+                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                    gtank2.dx = 0;
+                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx4) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrectx4.x + 150)
+                                                                                                    {
+                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                        gtank2.dx = 0;
+                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                    } //wallx5
+                                                                                                    else
+                                                                                                    {
+                                                                                                                                    
+                                                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                                                                                                                        {
+                                                                                                                                            gtank2.dy = 0;
+                                                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                            gtank2.x += gtank2.dx;
+                                                                                                                                            gtank2.y -= gtank2.dy;
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                                                                                                                            {
+                                                                                                                                                gtank2.dy = 0;
+                                                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                gtank2.x += gtank2.dx;
+                                                                                                                                                gtank2.y -= gtank2.dy;
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty1.x + 35)
+                                                                                                                                                {
+                                                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                    gtank2.dx = 0;
+                                                                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty1.x + 35)
+                                                                                                                                                    {
+                                                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                        gtank2.dx = 0;
+                                                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                                                    } //wally2
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 0 && gtank2.y - 5 < map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                                                                                                                        {
+                                                                                                                                                            gtank2.dy = 0;
+                                                                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                            gtank2.x += gtank2.dx;
+                                                                                                                                                            gtank2.y -= gtank2.dy;
+                                                                                                                                                        }
+                                                                                                                                                        else
+                                                                                                                                                        {
+                                                                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 0 && gtank2.y + 5 > map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                                                                                                                            {
+                                                                                                                                                                gtank2.dy = 0;
+                                                                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                                gtank2.x += gtank2.dx;
+                                                                                                                                                                gtank2.y -= gtank2.dy;
+                                                                                                                                                            }
+                                                                                                                                                            else
+                                                                                                                                                            {
+                                                                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && (degree2 > 90 || degree2 < -90) && gtank2.x > map.wallrecty2.x + 35)
+                                                                                                                                                                {
+                                                                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                                    gtank2.dx = 0;
+                                                                                                                                                                    gtank2.x += gtank2.dx;
+                                                                                                                                                                    gtank2.y -= gtank2.dy;
+                                                                                                                                                                }
+                                                                                                                                                                else
+                                                                                                                                                                {
+                                                                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 90 && degree2 > -90 && gtank2.x < map.wallrecty2.x + 35)
+                                                                                                                                                                    {
+                                                                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                                        gtank2.dx = 0;
+                                                                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                                                                    } //default
+                                                                                                                                                                    else
+                                                                                                                                                                    {
+                                                                                                                                                                        gtank2.dy = 0.2 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                                        gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                                        gtank2.x += gtank2.dx;
+                                                                                                                                                                        gtank2.y -= gtank2.dy;
+                                                                                                                                                                    
+                                                                                                                                                                
+                                                                                                                                                            
+                                                                                                                                                        
+                                                                                                                                                    
+                                                                                                                                                
+                                                                                                                                            
+                                                                                                                                        
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
+void tankmovedw1()
+{
+    //map1 collision of walls
+    if (map.cn == 1)
+    {
+
+        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 90 && degree1 > 0)
+        {
+            gtank1.dy = 0;
+            gtank1.dx = 0;
+            gtank1.x -= gtank1.dx;
+            gtank1.y += gtank1.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 180 && degree1 > 90)
+            {
+                gtank1.dy = 0;
+                gtank1.dx = 0;
+                gtank1.x -= gtank1.dx;
+                gtank1.y += gtank1.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 0 && degree1 > -90)
+                {
+                    gtank1.dy = 0;
+                    gtank1.dx = 0;
+                    gtank1.x -= gtank1.dx;
+                    gtank1.y += gtank1.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < -90 && degree1 > -180)
+                    {
+                        gtank1.dy = 0;
+                        gtank1.dx = 0;
+                        gtank1.x -= gtank1.dx;
+                        gtank1.y += gtank1.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && degree1 > 0)
+                        {
+                            gtank1.dy = 0;
+                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                            gtank1.x -= gtank1.dx;
+                            gtank1.y += gtank1.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && degree1 < 0)
+                            {
+                                gtank1.dy = 0;
+                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                gtank1.x -= gtank1.dx;
+                                gtank1.y += gtank1.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect1, &map.borderrecty1) == true && (degree1 > -90 && degree1 < 90))
+                                {
+                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                    gtank1.dx = 0;
+                                    gtank1.x -= gtank1.dx;
+                                    gtank1.y += gtank1.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect1, &map.borderrecty2) == true && (degree1 > 90 || degree1 < -90))
+                                    {
+                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                        gtank1.dx = 0;
+                                        gtank1.x -= gtank1.dx;
+                                        gtank1.y += gtank1.dy;
+                                    } //wallx1
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 < 0 && gtank1.y - 5 < map.wallrectx1.y && gtank1.x + 36 > map.wallrectx1.x && gtank1.x + 5 < map.wallrectx1.x + 280)
+                                        {
+                                            gtank1.dy = 0;
+                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                            gtank1.x -= gtank1.dx;
+                                            gtank1.y += gtank1.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 > 0 && gtank1.y + 5 > map.wallrectx1.y && gtank1.x + 36 > map.wallrectx1.x && gtank1.x + 5 < map.wallrectx1.x + 280)
+                                            {
+                                                gtank1.dy = 0;
+                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                gtank1.x -= gtank1.dx;
+                                                gtank1.y += gtank1.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrectx1.x + 150)
+                                                {
+                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                    gtank1.dx = 0;
+                                                    gtank1.x -= gtank1.dx;
+                                                    gtank1.y += gtank1.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrectx1.x + 150)
+                                                    {
+                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                        gtank1.dx = 0;
+                                                        gtank1.x -= gtank1.dx;
+                                                        gtank1.y += gtank1.dy;
+                                                    } //wallx2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 < 0 && gtank1.y - 5 < map.wallrectx2.y && gtank1.x + 36 > map.wallrectx2.x && gtank1.x + 5 < map.wallrectx2.x + 280)
+                                                        {
+                                                            gtank1.dy = 0;
+                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                            gtank1.x -= gtank1.dx;
+                                                            gtank1.y += gtank1.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 > 0 && gtank1.y + 5 > map.wallrectx2.y && gtank1.x + 36 > map.wallrectx2.x && gtank1.x + 5 < map.wallrectx2.x + 280)
+                                                            {
+                                                                gtank1.dy = 0;
+                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                gtank1.x -= gtank1.dx;
+                                                                gtank1.y += gtank1.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrectx2.x + 150)
+                                                                {
+                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                    gtank1.dx = 0;
+                                                                    gtank1.x -= gtank1.dx;
+                                                                    gtank1.y += gtank1.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrectx2.x + 150)
+                                                                    {
+                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                        gtank1.dx = 0;
+                                                                        gtank1.x -= gtank1.dx;
+                                                                        gtank1.y += gtank1.dy;
+                                                                    } //wally1
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                                                        {
+                                                                            gtank1.dy = 0;
+                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                            gtank1.x -= gtank1.dx;
+                                                                            gtank1.y += gtank1.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                                                            {
+                                                                                gtank1.dy = 0;
+                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                gtank1.x -= gtank1.dx;
+                                                                                gtank1.y += gtank1.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty1.x + 35)
+                                                                                {
+                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                    gtank1.dx = 0;
+                                                                                    gtank1.x -= gtank1.dx;
+                                                                                    gtank1.y += gtank1.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty1.x + 35)
+                                                                                    {
+                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                        gtank1.dx = 0;
+                                                                                        gtank1.x -= gtank1.dx;
+                                                                                        gtank1.y += gtank1.dy;
+                                                                                    } //wally2
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                                                        {
+                                                                                            gtank1.dy = 0;
+                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                            gtank1.x -= gtank1.dx;
+                                                                                            gtank1.y += gtank1.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                                                            {
+                                                                                                gtank1.dy = 0;
+                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                gtank1.y += gtank1.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty2.x + 35)
+                                                                                                {
+                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                    gtank1.dx = 0;
+                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty2.x + 35)
+                                                                                                    {
+                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                        gtank1.dx = 0;
+                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                    } //wally3
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty3.y && gtank1.x + 36 > map.wallrecty3.x && gtank1.x + 5 < map.wallrecty3.x + 70)
+                                                                                                        {
+                                                                                                            gtank1.dy = 0;
+                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                            gtank1.x -= gtank1.dx;
+                                                                                                            gtank1.y += gtank1.dy;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty3.y && gtank1.x + 36 > map.wallrecty3.x && gtank1.x + 5 < map.wallrecty3.x + 70)
+                                                                                                            {
+                                                                                                                gtank1.dy = 0;
+                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                                gtank1.y += gtank1.dy;
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty3.x + 35)
+                                                                                                                {
+                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                    gtank1.dx = 0;
+                                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty3.x + 35)
+                                                                                                                    {
+                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                        gtank1.dx = 0;
+                                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                                    } //wally4
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty4.y && gtank1.x + 36 > map.wallrecty4.x && gtank1.x + 5 < map.wallrecty4.x + 70)
+                                                                                                                        {
+                                                                                                                            gtank1.dy = 0;
+                                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                            gtank1.x -= gtank1.dx;
+                                                                                                                            gtank1.y += gtank1.dy;
+                                                                                                                        }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty4.y && gtank1.x + 36 > map.wallrecty4.x && gtank1.x + 5 < map.wallrecty4.x + 70)
+                                                                                                                            {
+                                                                                                                                gtank1.dy = 0;
+                                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                                                gtank1.y += gtank1.dy;
+                                                                                                                            }
+                                                                                                                            else
+                                                                                                                            {
+                                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty4.x + 35)
+                                                                                                                                {
+                                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                    gtank1.dx = 0;
+                                                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                {
+                                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty4.x + 35)
+                                                                                                                                    {
+                                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                        gtank1.dx = 0;
+                                                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                                                    } //wally5
+                                                                                                                                    else
+                                                                                                                                    {
+                                                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty5.y && gtank1.x + 36 > map.wallrecty5.x && gtank1.x + 5 < map.wallrecty5.x + 70)
+                                                                                                                                        {
+                                                                                                                                            gtank1.dy = 0;
+                                                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                            gtank1.x -= gtank1.dx;
+                                                                                                                                            gtank1.y += gtank1.dy;
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty5.y && gtank1.x + 36 > map.wallrecty5.x && gtank1.x + 5 < map.wallrecty5.x + 70)
+                                                                                                                                            {
+                                                                                                                                                gtank1.dy = 0;
+                                                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                                                                gtank1.y += gtank1.dy;
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty5.x + 35)
+                                                                                                                                                {
+                                                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                    gtank1.dx = 0;
+                                                                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty5.x + 35)
+                                                                                                                                                    {
+                                                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                        gtank1.dx = 0;
+                                                                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                                                                    } //default
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        gtank1.dy = 0.2 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (map.cn == 2)
+    {
+
+        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 90 && degree1 > 0)
+        {
+            gtank1.dy = 0;
+            gtank1.dx = 0;
+            gtank1.x -= gtank1.dx;
+            gtank1.y += gtank1.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 180 && degree1 > 90)
+            {
+                gtank1.dy = 0;
+                gtank1.dx = 0;
+                gtank1.x -= gtank1.dx;
+                gtank1.y += gtank1.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 0 && degree1 > -90)
+                {
+                    gtank1.dy = 0;
+                    gtank1.dx = 0;
+                    gtank1.x -= gtank1.dx;
+                    gtank1.y += gtank1.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < -90 && degree1 > -180)
+                    {
+                        gtank1.dy = 0;
+                        gtank1.dx = 0;
+                        gtank1.x -= gtank1.dx;
+                        gtank1.y += gtank1.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && degree1 > 0)
+                        {
+                            gtank1.dy = 0;
+                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                            gtank1.x -= gtank1.dx;
+                            gtank1.y += gtank1.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && degree1 < 0)
+                            {
+                                gtank1.dy = 0;
+                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                gtank1.x -= gtank1.dx;
+                                gtank1.y += gtank1.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect1, &map.borderrecty1) == true && (degree1 > -90 && degree1 < 90))
+                                {
+                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                    gtank1.dx = 0;
+                                    gtank1.x -= gtank1.dx;
+                                    gtank1.y += gtank1.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect1, &map.borderrecty2) == true && (degree1 > 90 || degree1 < -90))
+                                    {
+                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                        gtank1.dx = 0;
+                                        gtank1.x -= gtank1.dx;
+                                        gtank1.y += gtank1.dy;
+                                    } //wallx1
+                                    else
+                                    {
+
+                                        if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                        {
+                                            gtank1.dy = 0;
+                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                            gtank1.x -= gtank1.dx;
+                                            gtank1.y += gtank1.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                            {
+                                                gtank1.dy = 0;
+                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                gtank1.x -= gtank1.dx;
+                                                gtank1.y += gtank1.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty1.x + 35)
+                                                {
+                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                    gtank1.dx = 0;
+                                                    gtank1.x -= gtank1.dx;
+                                                    gtank1.y += gtank1.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty1.x + 35)
+                                                    {
+                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                        gtank1.dx = 0;
+                                                        gtank1.x -= gtank1.dx;
+                                                        gtank1.y += gtank1.dy;
+                                                    } //wally2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                        {
+                                                            gtank1.dy = 0;
+                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                            gtank1.x -= gtank1.dx;
+                                                            gtank1.y += gtank1.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                            {
+                                                                gtank1.dy = 0;
+                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                gtank1.x -= gtank1.dx;
+                                                                gtank1.y += gtank1.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty2.x + 35)
+                                                                {
+                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                    gtank1.dx = 0;
+                                                                    gtank1.x -= gtank1.dx;
+                                                                    gtank1.y += gtank1.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty2.x + 35)
+                                                                    {
+                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                        gtank1.dx = 0;
+                                                                        gtank1.x -= gtank1.dx;
+                                                                        gtank1.y += gtank1.dy;
+                                                                    } //wally3
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty3.y && gtank1.x + 36 > map.wallrecty3.x && gtank1.x + 5 < map.wallrecty3.x + 70)
+                                                                        {
+                                                                            gtank1.dy = 0;
+                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                            gtank1.x -= gtank1.dx;
+                                                                            gtank1.y += gtank1.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty3.y && gtank1.x + 36 > map.wallrecty3.x && gtank1.x + 5 < map.wallrecty3.x + 70)
+                                                                            {
+                                                                                gtank1.dy = 0;
+                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                gtank1.x -= gtank1.dx;
+                                                                                gtank1.y += gtank1.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty3.x + 35)
+                                                                                {
+                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                    gtank1.dx = 0;
+                                                                                    gtank1.x -= gtank1.dx;
+                                                                                    gtank1.y += gtank1.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty3) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty3.x + 35)
+                                                                                    {
+                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                        gtank1.dx = 0;
+                                                                                        gtank1.x -= gtank1.dx;
+                                                                                        gtank1.y += gtank1.dy;
+                                                                                    } //wally4
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty4.y && gtank1.x + 36 > map.wallrecty4.x && gtank1.x + 5 < map.wallrecty4.x + 70)
+                                                                                        {
+                                                                                            gtank1.dy = 0;
+                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                            gtank1.x -= gtank1.dx;
+                                                                                            gtank1.y += gtank1.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty4.y && gtank1.x + 36 > map.wallrecty4.x && gtank1.x + 5 < map.wallrecty4.x + 70)
+                                                                                            {
+                                                                                                gtank1.dy = 0;
+                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                gtank1.y += gtank1.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty4.x + 35)
+                                                                                                {
+                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                    gtank1.dx = 0;
+                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty4) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty4.x + 35)
+                                                                                                    {
+                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                        gtank1.dx = 0;
+                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                    } //wally5
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty5.y && gtank1.x + 36 > map.wallrecty5.x && gtank1.x + 5 < map.wallrecty5.x + 70)
+                                                                                                        {
+                                                                                                            gtank1.dy = 0;
+                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                            gtank1.x -= gtank1.dx;
+                                                                                                            gtank1.y += gtank1.dy;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty5.y && gtank1.x + 36 > map.wallrecty5.x && gtank1.x + 5 < map.wallrecty5.x + 70)
+                                                                                                            {
+                                                                                                                gtank1.dy = 0;
+                                                                                                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                                gtank1.y += gtank1.dy;
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty5.x + 35)
+                                                                                                                {
+                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                    gtank1.dx = 0;
+                                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty5) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty5.x + 35)
+                                                                                                                    {
+                                                                                                                        gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                        gtank1.dx = 0;
+                                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                                    } //default
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        gtank1.dy = 0.2 * sin(-degree1 * 3.14 / 180);
+                                                                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (map.cn == 3)
+    {
+        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 90 && degree1 > 0)
+        {
+            gtank1.dy = 0;
+            gtank1.dx = 0;
+            gtank1.x -= gtank1.dx;
+            gtank1.y += gtank1.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < 180 && degree1 > 90)
+            {
+                gtank1.dy = 0;
+                gtank1.dx = 0;
+                gtank1.x -= gtank1.dx;
+                gtank1.y += gtank1.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty1) == true && degree1 < 0 && degree1 > -90)
+                {
+                    gtank1.dy = 0;
+                    gtank1.dx = 0;
+                    gtank1.x -= gtank1.dx;
+                    gtank1.y += gtank1.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && SDL_HasIntersection(&grect1, &map.borderrecty2) == true && degree1 < -90 && degree1 > -180)
+                    {
+                        gtank1.dy = 0;
+                        gtank1.dx = 0;
+                        gtank1.x -= gtank1.dx;
+                        gtank1.y += gtank1.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect1, &map.borderrectx1) == true && degree1 > 0)
+                        {
+                            gtank1.dy = 0;
+                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                            gtank1.x -= gtank1.dx;
+                            gtank1.y += gtank1.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect1, &map.borderrectx2) == true && degree1 < 0)
+                            {
+                                gtank1.dy = 0;
+                                gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                gtank1.x -= gtank1.dx;
+                                gtank1.y += gtank1.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect1, &map.borderrecty2) == true && (degree1 > 90 || degree1 < -90))
+                                {
+                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                    gtank1.dx = 0;
+                                    gtank1.x -= gtank1.dx;
+                                    gtank1.y += gtank1.dy;
+                                } //wallx1
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 < 0 && gtank1.y - 5 < map.wallrectx1.y && gtank1.x + 36 > map.wallrectx1.x && gtank1.x + 5 < map.wallrectx1.x + 280)
+                                    {
+                                        gtank1.dy = 0;
+                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                        gtank1.x -= gtank1.dx;
+                                        gtank1.y += gtank1.dy;
+                                    }
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 > 0 && gtank1.y + 5 > map.wallrectx1.y && gtank1.x + 36 > map.wallrectx1.x && gtank1.x + 5 < map.wallrectx1.x + 280)
+                                        {
+                                            gtank1.dy = 0;
+                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                            gtank1.x -= gtank1.dx;
+                                            gtank1.y += gtank1.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrectx1.x + 150)
+                                            {
+                                                gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                gtank1.dx = 0;
+                                                gtank1.x -= gtank1.dx;
+                                                gtank1.y += gtank1.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect1, &map.wallrectx1) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrectx1.x + 150)
+                                                {
+                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                    gtank1.dx = 0;
+                                                    gtank1.x -= gtank1.dx;
+                                                    gtank1.y += gtank1.dy;
+                                                } //wallx2
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 < 0 && gtank1.y - 5 < map.wallrectx2.y && gtank1.x + 36 > map.wallrectx2.x && gtank1.x + 5 < map.wallrectx2.x + 280)
+                                                    {
+                                                        gtank1.dy = 0;
+                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                        gtank1.x -= gtank1.dx;
+                                                        gtank1.y += gtank1.dy;
+                                                    }
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 > 0 && gtank1.y + 5 > map.wallrectx2.y && gtank1.x + 36 > map.wallrectx2.x && gtank1.x + 5 < map.wallrectx2.x + 280)
+                                                        {
+                                                            gtank1.dy = 0;
+                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                            gtank1.x -= gtank1.dx;
+                                                            gtank1.y += gtank1.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrectx2.x + 150)
+                                                            {
+                                                                gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                gtank1.dx = 0;
+                                                                gtank1.x -= gtank1.dx;
+                                                                gtank1.y += gtank1.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect1, &map.wallrectx2) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrectx2.x + 150)
+                                                                {
+                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                    gtank1.dx = 0;
+                                                                    gtank1.x -= gtank1.dx;
+                                                                    gtank1.y += gtank1.dy;
+                                                                } //wallx3
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx3) == true && degree1 < 0 && gtank1.y - 5 < map.wallrectx3.y && gtank1.x + 36 > map.wallrectx3.x && gtank1.x + 5 < map.wallrectx3.x + 280)
+                                                                    {
+                                                                        gtank1.dy = 0;
+                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                        gtank1.x -= gtank1.dx;
+                                                                        gtank1.y += gtank1.dy;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect1, &map.wallrectx3) == true && degree1 > 0 && gtank1.y + 5 > map.wallrectx3.y && gtank1.x + 36 > map.wallrectx3.x && gtank1.x + 5 < map.wallrectx3.x + 280)
+                                                                        {
+                                                                            gtank1.dy = 0;
+                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                            gtank1.x -= gtank1.dx;
+                                                                            gtank1.y += gtank1.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect1, &map.wallrectx3) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrectx3.x + 150)
+                                                                            {
+                                                                                gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                gtank1.dx = 0;
+                                                                                gtank1.x -= gtank1.dx;
+                                                                                gtank1.y += gtank1.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect1, &map.wallrectx3) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrectx3.x + 150)
+                                                                                {
+                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+
+                                                                                } //wallx4
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrectx4) == true && degree1 < 0 && gtank1.y - 5 < map.wallrectx4.y && gtank1.x + 36 > map.wallrectx4.x && gtank1.x + 5 < map.wallrectx4.x + 280)
+                                                                                    {
+                                                                                        gtank1.dy = 0;
+                                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                        gtank1.x -= gtank1.dx;
+                                                                                        gtank1.y += gtank1.dy;
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrectx4) == true && degree1 > 0 && gtank1.y + 5 > map.wallrectx4.y && gtank1.x + 36 > map.wallrectx4.x && gtank1.x + 5 < map.wallrectx4.x + 280)
+                                                                                        {
+                                                                                            gtank1.dy = 0;
+                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                            gtank1.x -= gtank1.dx;
+                                                                                            gtank1.y += gtank1.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrectx4) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrectx4.x + 150)
+                                                                                            {
+                                                                                                gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                gtank1.dx = 0;
+                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                gtank1.y += gtank1.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrectx4) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrectx4.x + 150)
+                                                                                                {
+                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                    gtank1.dx = 0;
+                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                } //wallx5
+                                                                                               
+                                                                                                   
+                                                                                                                                 //wally1
+                                                                                                                                else
+                                                                                                                                {
+                                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                                                                                                                    {
+                                                                                                                                        gtank1.dy = 0;
+                                                                                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                                                    }
+                                                                                                                                    else
+                                                                                                                                    {
+                                                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty1.y && gtank1.x + 36 > map.wallrecty1.x && gtank1.x + 5 < map.wallrecty1.x + 70)
+                                                                                                                                        {
+                                                                                                                                            gtank1.dy = 0;
+                                                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                            gtank1.x -= gtank1.dx;
+                                                                                                                                            gtank1.y += gtank1.dy;
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty1.x + 35)
+                                                                                                                                            {
+                                                                                                                                                gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                gtank1.dx = 0;
+                                                                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                                                                gtank1.y += gtank1.dy;
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty1) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty1.x + 35)
+                                                                                                                                                {
+                                                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                    gtank1.dx = 0;
+                                                                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                                                                } //wally2
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 < 0 && gtank1.y - 5 < map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                                                                                                                    {
+                                                                                                                                                        gtank1.dy = 0;
+                                                                                                                                                        gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                        gtank1.x -= gtank1.dx;
+                                                                                                                                                        gtank1.y += gtank1.dy;
+                                                                                                                                                    }
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 0 && gtank1.y + 5 > map.wallrecty2.y && gtank1.x + 36 > map.wallrecty2.x && gtank1.x + 5 < map.wallrecty2.x + 70)
+                                                                                                                                                        {
+                                                                                                                                                            gtank1.dy = 0;
+                                                                                                                                                            gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                            gtank1.x -= gtank1.dx;
+                                                                                                                                                            gtank1.y += gtank1.dy;
+                                                                                                                                                        }
+                                                                                                                                                        else
+                                                                                                                                                        {
+                                                                                                                                                            if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && (degree1 < 90 || degree1 < -90) && gtank1.x > map.wallrecty2.x + 35)
+                                                                                                                                                            {
+                                                                                                                                                                gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                                gtank1.dx = 0;
+                                                                                                                                                                gtank1.x -= gtank1.dx;
+                                                                                                                                                                gtank1.y += gtank1.dy;
+                                                                                                                                                            }
+                                                                                                                                                            else
+                                                                                                                                                            {
+                                                                                                                                                                if (SDL_HasIntersection(&grect1, &map.wallrecty2) == true && degree1 > 90 && degree1 > -90 && gtank1.x < map.wallrecty2.x + 35)
+                                                                                                                                                                {
+                                                                                                                                                                    gtank1.dy = 0.1 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                                    gtank1.dx = 0;
+                                                                                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                                                                                } //default
+                                                                                                                                                                else
+                                                                                                                                                                {
+                                                                                                                                                                    gtank1.dy = 0.2 * sin(-degree1 * 3.14 / 180);
+                                                                                                                                                                    gtank1.dx = 0.2 * cos(-degree1 * 3.14 / 180);
+                                                                                                                                                                    gtank1.x -= gtank1.dx;
+                                                                                                                                                                    gtank1.y += gtank1.dy;
+                                                                                                                                                                
+                                                                                                                                                            
+                                                                                                                                                        
+                                                                                                                                                    
+                                                                                                                                                
+                                                                                                                                            
+                                                                                                                                        
+                                                                                                                                    
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 void tankmovedw2()
 {
-	 gtank2.dy = 0.2 * sin(-degree2 * 3.14 / 180);
-     gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
-	 gtank2.x += gtank2.dx;
-     gtank2.y -= gtank2.dy;
-     
+    //map1 collision of walls
+    if (map.cn == 1)
+    {
+        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 90 && degree2 > 0)
+        {
+            gtank2.dy = 0;
+            gtank2.dx = 0;
+            gtank2.x -= gtank2.dx;
+            gtank2.y += gtank2.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 180 && degree2 > 90)
+            {
+                gtank2.dy = 0;
+                gtank2.dx = 0;
+                gtank2.x -= gtank2.dx;
+                gtank2.y += gtank2.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 0 && degree2 > -90)
+                {
+                    gtank2.dy = 0;
+                    gtank2.dx = 0;
+                    gtank2.x -= gtank2.dx;
+                    gtank2.y += gtank2.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < -90 && degree2 > -180)
+                    {
+                        gtank2.dy = 0;
+                        gtank2.dx = 0;
+                        gtank2.x -= gtank2.dx;
+                        gtank2.y += gtank2.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && degree2 > 0)
+                        {
+                            gtank2.dy = 0;
+                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                            gtank2.x -= gtank2.dx;
+                            gtank2.y += gtank2.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && degree2 < 0)
+                            {
+                                gtank2.dy = 0;
+                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                gtank2.x -= gtank2.dx;
+                                gtank2.y += gtank2.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect2, &map.borderrecty1) == true && (degree2 > -90 && degree2 < 90))
+                                {
+                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                    gtank2.dx = 0;
+                                    gtank2.x -= gtank2.dx;
+                                    gtank2.y += gtank2.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect2, &map.borderrecty2) == true && (degree2 > 90 || degree2 < -90))
+                                    {
+                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                        gtank2.dx = 0;
+                                        gtank2.x -= gtank2.dx;
+                                        gtank2.y += gtank2.dy;
+                                    } //wallx1
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 < 0 && gtank2.y - 5 < map.wallrectx1.y && gtank2.x + 36 > map.wallrectx1.x && gtank2.x + 5 < map.wallrectx1.x + 280)
+                                        {
+                                            gtank2.dy = 0;
+                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                            gtank2.x -= gtank2.dx;
+                                            gtank2.y += gtank2.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 > 0 && gtank2.y + 5 > map.wallrectx1.y && gtank2.x + 36 > map.wallrectx1.x && gtank2.x + 5 < map.wallrectx1.x + 280)
+                                            {
+                                                gtank2.dy = 0;
+                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                gtank2.x -= gtank2.dx;
+                                                gtank2.y += gtank2.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrectx1.x + 150)
+                                                {
+                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                    gtank2.dx = 0;
+                                                    gtank2.x -= gtank2.dx;
+                                                    gtank2.y += gtank2.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrectx1.x + 150)
+                                                    {
+                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                        gtank2.dx = 0;
+                                                        gtank2.x -= gtank2.dx;
+                                                        gtank2.y += gtank2.dy;
+                                                    } //wallx2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 < 0 && gtank2.y - 5 < map.wallrectx2.y && gtank2.x + 36 > map.wallrectx2.x && gtank2.x + 5 < map.wallrectx2.x + 280)
+                                                        {
+                                                            gtank2.dy = 0;
+                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                            gtank2.x -= gtank2.dx;
+                                                            gtank2.y += gtank2.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 > 0 && gtank2.y + 5 > map.wallrectx2.y && gtank2.x + 36 > map.wallrectx2.x && gtank2.x + 5 < map.wallrectx2.x + 280)
+                                                            {
+                                                                gtank2.dy = 0;
+                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                gtank2.x -= gtank2.dx;
+                                                                gtank2.y += gtank2.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrectx2.x + 150)
+                                                                {
+                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                    gtank2.dx = 0;
+                                                                    gtank2.x -= gtank2.dx;
+                                                                    gtank2.y += gtank2.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrectx2.x + 150)
+                                                                    {
+                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                        gtank2.dx = 0;
+                                                                        gtank2.x -= gtank2.dx;
+                                                                        gtank2.y += gtank2.dy;
+                                                                    } //wally1
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                                                        {
+                                                                            gtank2.dy = 0;
+                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                            gtank2.x -= gtank2.dx;
+                                                                            gtank2.y += gtank2.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                                                            {
+                                                                                gtank2.dy = 0;
+                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                gtank2.x -= gtank2.dx;
+                                                                                gtank2.y += gtank2.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty1.x + 35)
+                                                                                {
+                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                    gtank2.dx = 0;
+                                                                                    gtank2.x -= gtank2.dx;
+                                                                                    gtank2.y += gtank2.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty1.x + 35)
+                                                                                    {
+                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                        gtank2.dx = 0;
+                                                                                        gtank2.x -= gtank2.dx;
+                                                                                        gtank2.y += gtank2.dy;
+                                                                                    } //wally2
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                                                        {
+                                                                                            gtank2.dy = 0;
+                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                            gtank2.x -= gtank2.dx;
+                                                                                            gtank2.y += gtank2.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                                                            {
+                                                                                                gtank2.dy = 0;
+                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                gtank2.y += gtank2.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty2.x + 35)
+                                                                                                {
+                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                    gtank2.dx = 0;
+                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty2.x + 35)
+                                                                                                    {
+                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                        gtank2.dx = 0;
+                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                    } //wally3
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty3.y && gtank2.x + 36 > map.wallrecty3.x && gtank2.x + 5 < map.wallrecty3.x + 70)
+                                                                                                        {
+                                                                                                            gtank2.dy = 0;
+                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                            gtank2.x -= gtank2.dx;
+                                                                                                            gtank2.y += gtank2.dy;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty3.y && gtank2.x + 36 > map.wallrecty3.x && gtank2.x + 5 < map.wallrecty3.x + 70)
+                                                                                                            {
+                                                                                                                gtank2.dy = 0;
+                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                                gtank2.y += gtank2.dy;
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty3.x + 35)
+                                                                                                                {
+                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                    gtank2.dx = 0;
+                                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty3.x + 35)
+                                                                                                                    {
+                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                        gtank2.dx = 0;
+                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                    } //wally4
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty4.y && gtank2.x + 36 > map.wallrecty4.x && gtank2.x + 5 < map.wallrecty4.x + 70)
+                                                                                                                        {
+                                                                                                                            gtank2.dy = 0;
+                                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                            gtank2.x -= gtank2.dx;
+                                                                                                                            gtank2.y += gtank2.dy;
+                                                                                                                        }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty4.y && gtank2.x + 36 > map.wallrecty4.x && gtank2.x + 5 < map.wallrecty4.x + 70)
+                                                                                                                            {
+                                                                                                                                gtank2.dy = 0;
+                                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                                                gtank2.y += gtank2.dy;
+                                                                                                                            }
+                                                                                                                            else
+                                                                                                                            {
+                                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty4.x + 35)
+                                                                                                                                {
+                                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                    gtank2.dx = 0;
+                                                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                                                }
+                                                                                                                                else
+                                                                                                                                {
+                                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty4.x + 35)
+                                                                                                                                    {
+                                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                        gtank2.dx = 0;
+                                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                                    } //wally5
+                                                                                                                                    else
+                                                                                                                                    {
+                                                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty5.y && gtank2.x + 36 > map.wallrecty5.x && gtank2.x + 5 < map.wallrecty5.x + 70)
+                                                                                                                                        {
+                                                                                                                                            gtank2.dy = 0;
+                                                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                            gtank2.x -= gtank2.dx;
+                                                                                                                                            gtank2.y += gtank2.dy;
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty5.y && gtank2.x + 36 > map.wallrecty5.x && gtank2.x + 5 < map.wallrecty5.x + 70)
+                                                                                                                                            {
+                                                                                                                                                gtank2.dy = 0;
+                                                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                                                                gtank2.y += gtank2.dy;
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty5.x + 35)
+                                                                                                                                                {
+                                                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                    gtank2.dx = 0;
+                                                                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty5.x + 35)
+                                                                                                                                                    {
+                                                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                        gtank2.dx = 0;
+                                                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                                                    } //default
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        gtank2.dy = 0.2 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                        gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (map.cn == 2)
+    {
+        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 90 && degree2 > 0)
+        {
+            gtank2.dy = 0;
+            gtank2.dx = 0;
+            gtank2.x -= gtank2.dx;
+            gtank2.y += gtank2.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 180 && degree2 > 90)
+            {
+                gtank2.dy = 0;
+                gtank2.dx = 0;
+                gtank2.x -= gtank2.dx;
+                gtank2.y += gtank2.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 0 && degree2 > -90)
+                {
+                    gtank2.dy = 0;
+                    gtank2.dx = 0;
+                    gtank2.x -= gtank2.dx;
+                    gtank2.y += gtank2.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < -90 && degree2 > -180)
+                    {
+                        gtank2.dy = 0;
+                        gtank2.dx = 0;
+                        gtank2.x -= gtank2.dx;
+                        gtank2.y += gtank2.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && degree2 > 0)
+                        {
+                            gtank2.dy = 0;
+                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                            gtank2.x -= gtank2.dx;
+                            gtank2.y += gtank2.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && degree2 < 0)
+                            {
+                                gtank2.dy = 0;
+                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                gtank2.x -= gtank2.dx;
+                                gtank2.y += gtank2.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect2, &map.borderrecty1) == true && (degree2 > -90 && degree2 < 90))
+                                {
+                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                    gtank2.dx = 0;
+                                    gtank2.x -= gtank2.dx;
+                                    gtank2.y += gtank2.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect2, &map.borderrecty2) == true && (degree2 > 90 || degree2 < -90))
+                                    {
+                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                        gtank2.dx = 0;
+                                        gtank2.x -= gtank2.dx;
+                                        gtank2.y += gtank2.dy;
+                                    } //wallx1
+                                    else
+                                    {
+
+                                        if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                        {
+                                            gtank2.dy = 0;
+                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                            gtank2.x -= gtank2.dx;
+                                            gtank2.y += gtank2.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                            {
+                                                gtank2.dy = 0;
+                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                gtank2.x -= gtank2.dx;
+                                                gtank2.y += gtank2.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty1.x + 35)
+                                                {
+                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                    gtank2.dx = 0;
+                                                    gtank2.x -= gtank2.dx;
+                                                    gtank2.y += gtank2.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty1.x + 35)
+                                                    {
+                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                        gtank2.dx = 0;
+                                                        gtank2.x -= gtank2.dx;
+                                                        gtank2.y += gtank2.dy;
+                                                    } //wally2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                        {
+                                                            gtank2.dy = 0;
+                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                            gtank2.x -= gtank2.dx;
+                                                            gtank2.y += gtank2.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                            {
+                                                                gtank2.dy = 0;
+                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                gtank2.x -= gtank2.dx;
+                                                                gtank2.y += gtank2.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty2.x + 35)
+                                                                {
+                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                    gtank2.dx = 0;
+                                                                    gtank2.x -= gtank2.dx;
+                                                                    gtank2.y += gtank2.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty2.x + 35)
+                                                                    {
+                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                        gtank2.dx = 0;
+                                                                        gtank2.x -= gtank2.dx;
+                                                                        gtank2.y += gtank2.dy;
+                                                                    } //wally3
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty3.y && gtank2.x + 36 > map.wallrecty3.x && gtank2.x + 5 < map.wallrecty3.x + 70)
+                                                                        {
+                                                                            gtank2.dy = 0;
+                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                            gtank2.x -= gtank2.dx;
+                                                                            gtank2.y += gtank2.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty3.y && gtank2.x + 36 > map.wallrecty3.x && gtank2.x + 5 < map.wallrecty3.x + 70)
+                                                                            {
+                                                                                gtank2.dy = 0;
+                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                gtank2.x -= gtank2.dx;
+                                                                                gtank2.y += gtank2.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty3.x + 35)
+                                                                                {
+                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                    gtank2.dx = 0;
+                                                                                    gtank2.x -= gtank2.dx;
+                                                                                    gtank2.y += gtank2.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty3) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty3.x + 35)
+                                                                                    {
+                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                        gtank2.dx = 0;
+                                                                                        gtank2.x -= gtank2.dx;
+                                                                                        gtank2.y += gtank2.dy;
+                                                                                    } //wally4
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty4.y && gtank2.x + 36 > map.wallrecty4.x && gtank2.x + 5 < map.wallrecty4.x + 70)
+                                                                                        {
+                                                                                            gtank2.dy = 0;
+                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                            gtank2.x -= gtank2.dx;
+                                                                                            gtank2.y += gtank2.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty4.y && gtank2.x + 36 > map.wallrecty4.x && gtank2.x + 5 < map.wallrecty4.x + 70)
+                                                                                            {
+                                                                                                gtank2.dy = 0;
+                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                gtank2.y += gtank2.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty4.x + 35)
+                                                                                                {
+                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                    gtank2.dx = 0;
+                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty4) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty4.x + 35)
+                                                                                                    {
+                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                        gtank2.dx = 0;
+                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                    } //wally5
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty5.y && gtank2.x + 36 > map.wallrecty5.x && gtank2.x + 5 < map.wallrecty5.x + 70)
+                                                                                                        {
+                                                                                                            gtank2.dy = 0;
+                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                            gtank2.x -= gtank2.dx;
+                                                                                                            gtank2.y += gtank2.dy;
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty5.y && gtank2.x + 36 > map.wallrecty5.x && gtank2.x + 5 < map.wallrecty5.x + 70)
+                                                                                                            {
+                                                                                                                gtank2.dy = 0;
+                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                                gtank2.y += gtank2.dy;
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty5.x + 35)
+                                                                                                                {
+                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                    gtank2.dx = 0;
+                                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                                }
+                                                                                                                else
+                                                                                                                {
+                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty5) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty5.x + 35)
+                                                                                                                    {
+                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                        gtank2.dx = 0;
+                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                    } //default
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        gtank2.dy = 0.2 * sin(-degree2 * 3.14 / 180);
+                                                                                                                        gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (map.cn == 3)
+    {
+
+        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 90 && degree2 > 0)
+        {
+            gtank2.dy = 0;
+            gtank2.dx = 0;
+            gtank2.x -= gtank2.dx;
+            gtank2.y += gtank2.dy;
+        }
+        else
+        {
+            if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < 180 && degree2 > 90)
+            {
+                gtank2.dy = 0;
+                gtank2.dx = 0;
+                gtank2.x -= gtank2.dx;
+                gtank2.y += gtank2.dy;
+            }
+            else
+            {
+                if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty1) == true && degree2 < 0 && degree2 > -90)
+                {
+                    gtank2.dy = 0;
+                    gtank2.dx = 0;
+                    gtank2.x -= gtank2.dx;
+                    gtank2.y += gtank2.dy;
+                }
+                else
+                {
+                    if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && SDL_HasIntersection(&grect2, &map.borderrecty2) == true && degree2 < -90 && degree2 > -180)
+                    {
+                        gtank2.dy = 0;
+                        gtank2.dx = 0;
+                        gtank2.x -= gtank2.dx;
+                        gtank2.y += gtank2.dy;
+                    } //wallx1
+                    else
+                    {
+
+                        if (SDL_HasIntersection(&grect2, &map.borderrectx1) == true && degree2 > 0)
+                        {
+                            gtank2.dy = 0;
+                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                            gtank2.x -= gtank2.dx;
+                            gtank2.y += gtank2.dy;
+                        }
+                        else
+                        {
+                            if (SDL_HasIntersection(&grect2, &map.borderrectx2) == true && degree2 < 0)
+                            {
+                                gtank2.dy = 0;
+                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                gtank2.x -= gtank2.dx;
+                                gtank2.y += gtank2.dy;
+                            }
+                            else
+                            {
+                                if (SDL_HasIntersection(&grect2, &map.borderrecty1) == true && (degree2 > -90 && degree2 < 90))
+                                {
+                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                    gtank2.dx = 0;
+                                    gtank2.x -= gtank2.dx;
+                                    gtank2.y += gtank2.dy;
+                                }
+                                else
+                                {
+                                    if (SDL_HasIntersection(&grect2, &map.borderrecty2) == true && (degree2 > 90 || degree2 < -90))
+                                    {
+                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                        gtank2.dx = 0;
+                                        gtank2.x -= gtank2.dx;
+                                        gtank2.y += gtank2.dy;
+                                    } //wallx1
+                                    else
+                                    {
+                                        if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 < 0 && gtank2.y - 5 < map.wallrectx1.y && gtank2.x + 36 > map.wallrectx1.x && gtank2.x + 5 < map.wallrectx1.x + 280)
+                                        {
+                                            gtank2.dy = 0;
+                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                            gtank2.x -= gtank2.dx;
+                                            gtank2.y += gtank2.dy;
+                                        }
+                                        else
+                                        {
+                                            if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 > 0 && gtank2.y + 5 > map.wallrectx1.y && gtank2.x + 36 > map.wallrectx1.x && gtank2.x + 5 < map.wallrectx1.x + 280)
+                                            {
+                                                gtank2.dy = 0;
+                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                gtank2.x -= gtank2.dx;
+                                                gtank2.y += gtank2.dy;
+                                            }
+                                            else
+                                            {
+                                                if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrectx1.x + 150)
+                                                {
+                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                    gtank2.dx = 0;
+                                                    gtank2.x -= gtank2.dx;
+                                                    gtank2.y += gtank2.dy;
+                                                }
+                                                else
+                                                {
+                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx1) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrectx1.x + 150)
+                                                    {
+                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                        gtank2.dx = 0;
+                                                        gtank2.x -= gtank2.dx;
+                                                        gtank2.y += gtank2.dy;
+                                                    } //wallx2
+                                                    else
+                                                    {
+                                                        if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 < 0 && gtank2.y - 5 < map.wallrectx2.y && gtank2.x + 36 > map.wallrectx2.x && gtank2.x + 5 < map.wallrectx2.x + 280)
+                                                        {
+                                                            gtank2.dy = 0;
+                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                            gtank2.x -= gtank2.dx;
+                                                            gtank2.y += gtank2.dy;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 > 0 && gtank2.y + 5 > map.wallrectx2.y && gtank2.x + 36 > map.wallrectx2.x && gtank2.x + 5 < map.wallrectx2.x + 280)
+                                                            {
+                                                                gtank2.dy = 0;
+                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                gtank2.x -= gtank2.dx;
+                                                                gtank2.y += gtank2.dy;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrectx2.x + 150)
+                                                                {
+                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                    gtank2.dx = 0;
+                                                                    gtank2.x -= gtank2.dx;
+                                                                    gtank2.y += gtank2.dy;
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx2) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrectx2.x + 150)
+                                                                    {
+                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                        gtank2.dx = 0;
+                                                                        gtank2.x -= gtank2.dx;
+                                                                        gtank2.y += gtank2.dy;
+                                                                    } //wallx3
+                                                                    else
+                                                                    {
+                                                                        if (SDL_HasIntersection(&grect2, &map.wallrectx3) == true && degree2 < 0 && gtank2.y - 5 < map.wallrectx3.y && gtank2.x + 36 > map.wallrectx3.x && gtank2.x + 5 < map.wallrectx3.x + 280)
+                                                                        {
+                                                                            gtank2.dy = 0;
+                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                            gtank2.x -= gtank2.dx;
+                                                                            gtank2.y += gtank2.dy;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (SDL_HasIntersection(&grect2, &map.wallrectx3) == true && degree2 > 0 && gtank2.y + 5 > map.wallrectx3.y && gtank2.x + 36 > map.wallrectx3.x && gtank2.x + 5 < map.wallrectx3.x + 280)
+                                                                            {
+                                                                                gtank2.dy = 0;
+                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                gtank2.x -= gtank2.dx;
+                                                                                gtank2.y += gtank2.dy;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (SDL_HasIntersection(&grect2, &map.wallrectx3) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrectx3.x + 150)
+                                                                                {
+                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                    gtank2.dx = 0;
+                                                                                    gtank2.x -= gtank2.dx;
+                                                                                    gtank2.y += gtank2.dy;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx3) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrectx3.x + 150)
+                                                                                    {
+                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                        gtank2.dx = 0;
+                                                                                        gtank2.x -= gtank2.dx;
+                                                                                        gtank2.y += gtank2.dy;
+                                                                                    } //wallx4
+                                                                                    else
+                                                                                    {
+                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrectx4) == true && degree2 < 0 && gtank2.y - 5 < map.wallrectx4.y && gtank2.x + 36 > map.wallrectx4.x && gtank2.x + 5 < map.wallrectx4.x + 280)
+                                                                                        {
+                                                                                            gtank2.dy = 0;
+                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                            gtank2.x -= gtank2.dx;
+                                                                                            gtank2.y += gtank2.dy;
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrectx4) == true && degree2 > 0 && gtank2.y + 5 > map.wallrectx4.y && gtank2.x + 36 > map.wallrectx4.x && gtank2.x + 5 < map.wallrectx4.x + 280)
+                                                                                            {
+                                                                                                gtank2.dy = 0;
+                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                gtank2.y += gtank2.dy;
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrectx4) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrectx4.x + 150)
+                                                                                                {
+                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                    gtank2.dx = 0;
+                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrectx4) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrectx4.x + 150)
+                                                                                                    {
+                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                        gtank2.dx = 0;
+                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                    } //wallx5
+                                                                                                    else
+                                                                                                    {
+                                                                                                       
+                                                                                                
+                                                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                                                                                                                        {
+                                                                                                                                            gtank2.dy = 0;
+                                                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                            gtank2.x -= gtank2.dx;
+                                                                                                                                            gtank2.y += gtank2.dy;
+                                                                                                                                        }
+                                                                                                                                        else
+                                                                                                                                        {
+                                                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty1.y && gtank2.x + 36 > map.wallrecty1.x && gtank2.x + 5 < map.wallrecty1.x + 70)
+                                                                                                                                            {
+                                                                                                                                                gtank2.dy = 0;
+                                                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                                                                gtank2.y += gtank2.dy;
+                                                                                                                                            }
+                                                                                                                                            else
+                                                                                                                                            {
+                                                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty1.x + 35)
+                                                                                                                                                {
+                                                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                    gtank2.dx = 0;
+                                                                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                                                                }
+                                                                                                                                                else
+                                                                                                                                                {
+                                                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty1) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty1.x + 35)
+                                                                                                                                                    {
+                                                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                        gtank2.dx = 0;
+                                                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                                                    } //wally2
+                                                                                                                                                    else
+                                                                                                                                                    {
+                                                                                                                                                        if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 < 0 && gtank2.y - 5 < map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                                                                                                                        {
+                                                                                                                                                            gtank2.dy = 0;
+                                                                                                                                                            gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                            gtank2.x -= gtank2.dx;
+                                                                                                                                                            gtank2.y += gtank2.dy;
+                                                                                                                                                        }
+                                                                                                                                                        else
+                                                                                                                                                        {
+                                                                                                                                                            if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 0 && gtank2.y + 5 > map.wallrecty2.y && gtank2.x + 36 > map.wallrecty2.x && gtank2.x + 5 < map.wallrecty2.x + 70)
+                                                                                                                                                            {
+                                                                                                                                                                gtank2.dy = 0;
+                                                                                                                                                                gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                                gtank2.x -= gtank2.dx;
+                                                                                                                                                                gtank2.y += gtank2.dy;
+                                                                                                                                                            }
+                                                                                                                                                            else
+                                                                                                                                                            {
+                                                                                                                                                                if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && (degree2 < 90 || degree2 < -90) && gtank2.x > map.wallrecty2.x + 35)
+                                                                                                                                                                {
+                                                                                                                                                                    gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                                    gtank2.dx = 0;
+                                                                                                                                                                    gtank2.x -= gtank2.dx;
+                                                                                                                                                                    gtank2.y += gtank2.dy;
+                                                                                                                                                                }
+                                                                                                                                                                else
+                                                                                                                                                                {
+                                                                                                                                                                    if (SDL_HasIntersection(&grect2, &map.wallrecty2) == true && degree2 > 90 && degree2 > -90 && gtank2.x < map.wallrecty2.x + 35)
+                                                                                                                                                                    {
+                                                                                                                                                                        gtank2.dy = 0.1 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                                        gtank2.dx = 0;
+                                                                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                                                                    } //default
+                                                                                                                                                                    else
+                                                                                                                                                                    {
+                                                                                                                                                                        gtank2.dy = 0.2 * sin(-degree2 * 3.14 / 180);
+                                                                                                                                                                        gtank2.dx = 0.2 * cos(-degree2 * 3.14 / 180);
+                                                                                                                                                                        gtank2.x -= gtank2.dx;
+                                                                                                                                                                        gtank2.y += gtank2.dy;
+                                                                                                                                                                    
+                                                                                                                                                                
+                                                                                                                                                            
+                                                                                                                                                        
+                                                                                                                                                    
+                                                                                                                                                
+                                                                                                                                        
+                                                                                                                                        
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
 
 //control movement and turn
 bool Tank(SDL_Event e, bool *quit)
 {
- 	float a,b,c,d;
-    double f;
-    int k,t;
+ 	
     gtank1.ipos = (gtank1.y - 6) / 100;
     gtank1.jpos = (gtank1.x - 6) / 100;
     gtank2.ipos = (gtank2.y - 6) / 100;
     gtank2.jpos = (gtank2.x - 6) / 100;
-	
 
     SDL_PollEvent(&e);
     if (state[SDL_SCANCODE_LEFT])
@@ -403,21 +4349,20 @@ bool Tank(SDL_Event e, bool *quit)
 
     if (state[SDL_SCANCODE_W])
     {
-        tankmovedw1();
+        tankmoveup1();
     }
     if (state[SDL_SCANCODE_S])
     {
-        tankmoveup1();
+        tankmovedw1();
     }
- if (state[SDL_SCANCODE_UP])
-    {
-        tankmovedw2();
-    }
-    if (state[SDL_SCANCODE_DOWN])
+    if (state[SDL_SCANCODE_UP])
     {
         tankmoveup2();
     }
-    
+    if (state[SDL_SCANCODE_DOWN])
+    {
+        tankmovedw2();
+    }
     if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_q)
     {
         if (gtank1.bullet <= 5)
