@@ -7,6 +7,8 @@ SDL_Renderer *gRenderer = NULL;
 Uint32 lastTime = 0, currentTime;
 Mix_Chunk *TE = NULL; //Tank Explosion sound
 Mix_Chunk *BR = NULL; //Bullet Reflect sound
+bool EBFlag = false; //Extera Bullet Flag
+Uint32 lastTimebullet = 0;
 class bullet
 {
 public:
@@ -645,5 +647,17 @@ public:
             }
         }
     }
+    void Reloading()
+    {
+        if( gtank1.BulletFlag == true)
+        {
+            gtank1.bullet = 0;
+        }
+        else if( gtank2.BulletFlag == true)
+        {
+            gtank2.bullet = 0;
+        }
+    }
+
 
 } gbullet1[6], gbullet2[6];

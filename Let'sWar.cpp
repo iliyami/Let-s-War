@@ -39,10 +39,12 @@ SDL_Window* gWindow = NULL;
 SDL_Surface* gScreenSurface = NULL;
 
 //Surface for loading png images (except map)
-SDL_Surface* gSurface1 = NULL;
-SDL_Surface* gSurface2 = NULL;
-SDL_Surface* gSurface3 = NULL;
-SDL_Surface* gSurface = NULL;
+SDL_Surface* gSurface1 = NULL; //tank1
+SDL_Surface* gSurface2 = NULL; //tank2
+SDL_Surface* gSurface3 = NULL; //laser
+SDL_Surface* gSurface = NULL; // ttf
+SDL_Surface* gSurface5 = NULL; // extra ammo
+
 
 //The image we will load and show on the screen
 SDL_Surface* Wallsurface= NULL;
@@ -70,6 +72,7 @@ SDL_Texture* walltexture_y3= NULL;
 SDL_Texture* walltexture_y4= NULL;
 SDL_Texture* walltexture_y5= NULL;
 SDL_Texture* walltexture_y6= NULL;
+SDL_Texture* ammotexture = NULL;//For Extera Ammo
 
 
 //keyboard states
@@ -79,6 +82,7 @@ const Uint8 *state = SDL_GetKeyboardState(NULL);
 SDL_Rect grect1;
 SDL_Rect grect2; 
 SDL_Rect LaserRect;
+SDL_Rect BulletRect;
 SDL_Rect backrect={0,0,1280,790};
 SDL_Rect gRF1 = {600, 725, 50, 50}; //grect for the font of tank1 score 
 SDL_Rect gRF2  = {1200, 725, 50, 50};//grect for the font of tank2 score 
@@ -86,6 +90,7 @@ SDL_Rect gRF2  = {1200, 725, 50, 50};//grect for the font of tank2 score
 //Musics and Audios
 Mix_Music *gMusic = NULL;
 Mix_Chunk *TB = NULL;//Tank Bullet sound
+Mix_Chunk *Reloading = NULL;// Tank bullets reloading
 
 //Fonts
 TTF_Font *Font = NULL;
@@ -118,6 +123,7 @@ bool init()
 		TB = Mix_LoadWAV("Tank Bullet.wav");
 		TE = Mix_LoadWAV("Tank explosion.wav");
 		BR = Mix_LoadWAV("Bullet reflect.wav");
+		Reloading = Mix_LoadWAV("Reload.wav");
 
 
 		if( gWindow == NULL )
@@ -135,6 +141,8 @@ bool init()
   			gTexture2 = SDL_CreateTextureFromSurface(gRenderer, gSurface2);
 			gSurface3 = SDL_LoadBMP("pointer.bmp");
     		glaser = SDL_CreateTextureFromSurface(gRenderer, gSurface3);
+			gSurface5 = SDL_LoadBMP("Extra Bullet.bmp");
+			ammotexture = SDL_CreateTextureFromSurface(gRenderer, gSurface5);
 
 	  		gtank1.x = 125;
     		gtank1.y = 55;
@@ -153,10 +161,6 @@ bool init()
 
 void loadMedia(int cn)
 {
-	//Loading success flag
-
-
- 	
 	//Load random image
   			background = SDL_LoadBMP("background.bmp");
    			gbackgroundT = SDL_CreateTextureFromSurface(gRenderer, background);
@@ -432,12 +436,42 @@ bool Tank(SDL_Event e, bool *quit)
 
 void lasericon(Uint32 lasertime)
 {
-
     if (SDL_GetTicks() >= 12000 + lasertime && laserflag == false)
     {
         laserflag = true;
         LaserRect = {(rand() % 9) * 100 + 45, (rand() % 6) * 100 + 45, 25, 25};
     }
+}
+
+void BulletIcon(Uint32 lastTimebullet)
+{
+	if(SDL_GetTicks() >= 12000 + lastTimebullet && EBFlag == false)
+	{
+		EBFlag = true;
+		BulletRect = {(rand() % 9) * 100 + 100, (rand() % 5) * 100 + 50, 25, 25};
+	}
+}
+
+void BICollision()//BulletIconCollision
+{
+	if(SDL_HasIntersection(&BulletRect, &grect1) == true)
+	{
+		Mix_PlayChannel(-1, Reloading, 0);
+		gtank1.BulletFlag = true;
+		EBFlag = false;
+		lastTimebullet = SDL_GetTicks();
+		gtank1.bullet = 0;
+
+	}
+	else if(SDL_HasIntersection(&BulletRect, &grect2) == true)
+	{
+		Mix_PlayChannel(-1, Reloading, 0);
+		gtank2.BulletFlag = true;
+		EBFlag = false;
+		lastTimebullet = SDL_GetTicks();
+		gtank2.bullet = 0;
+
+	}
 }
 
 void close()
@@ -592,6 +626,11 @@ int main( int argc, char* args[] )
 						SDL_RenderCopyEx(gRenderer, gTexture2, NULL, &grect2, degree2, NULL, SDL_FLIP_NONE);
 					if (laserflag == true)
 						SDL_RenderCopy(gRenderer, glaser, NULL, &LaserRect);
+					if (EBFlag == true)
+						SDL_RenderCopy(gRenderer, ammotexture, NULL, &BulletRect);
+					BulletIcon(lastTimebullet);
+					BICollision();
+					
 					ShowScore();
 					for (int i = 0; i < 6; i++)
 					{
@@ -600,7 +639,6 @@ int main( int argc, char* args[] )
 						if (gbullet2[i].value == 1)
 							gbullet2[i].move();
 					}
-					CheckDraw();
 					lose();
 					SDL_RenderPresent(gRenderer);
 				} while (Tank(e, quit) && !*quit);

@@ -8,6 +8,7 @@ public:
     int score = 0;
     bool lose = false;
     bool LaserFlag = false;
+    bool BulletFlag = false;
     char number[4] = "";
     
     char convert(int score, char number[4])
