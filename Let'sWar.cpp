@@ -4439,7 +4439,6 @@ void BICollision()//BulletIconCollision
 		EBFlag = false;
 		lastTimebullet = SDL_GetTicks();
 		gtank1.bullet = 0;
-        BulletRect = {-10, -10, 25, 25};
 
 	}
 	else if(SDL_HasIntersection(&BulletRect, &grect2) == true)
@@ -4449,7 +4448,7 @@ void BICollision()//BulletIconCollision
 		EBFlag = false;
 		lastTimebullet = SDL_GetTicks();
 		gtank2.bullet = 0;
-        BulletRect = {-10, -10, 25, 25};
+
 	}
 }
 
@@ -4506,6 +4505,24 @@ void Score()
     {
         SDL_RenderCopy(gRenderer, WinTexture2, NULL, &WinRect);
     }
+}
+
+void close()
+{
+	// Deallocate surface
+	// SDL_FreeSurface( gMap );
+	// SDL_FreeSurface( gSurface1);
+	// SDL_FreeSurface( gSurface2 );
+	// gMap = NULL;
+	// gSurface1 = NULL;
+	// gSurface2 = NULL;
+
+	// Destroy window
+	// SDL_DestroyWindow( gWindow );
+	// gWindow = NULL;
+
+	// Quit SDL subsystems
+	// SDL_Quit();
 }
 
 
