@@ -5,3 +5,9 @@ This is my second project for the basic programming class with Dr.Movahedi.
 It takes completely 3days for me and my work mate to make this 2d game.
 Thanks to my work mate Amirmehdi Shademan for cooperating and good work.
 and at the end "The project is not very serious so dont take it serious:))"
+
+
+How To run the programm?
+please run these commands :
+g++ Let\'sWar.cpp -w -lSDL2 -lSDL2_image -lSDL2_gfx -lSDL2_mixer -o run
+./run
