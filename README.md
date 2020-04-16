@@ -9,5 +9,5 @@ and at the end "The project is not very serious so dont take it serious:))"
 
 How To run the programm?
 please run these commands :
-g++ Let\'sWar.cpp -w -lSDL2 -lSDL2_image -lSDL2_gfx -lSDL2_mixer -o run
+g++ Let\'sWar.cpp -w -lSDL2 -lSDL2_image -lSDL2_gfx -lSDL2_mixer -o run \n
 ./run
